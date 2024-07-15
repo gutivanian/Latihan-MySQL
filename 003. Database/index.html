@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+</head>
+<body>
+    <h1>Database</h1>
+    <p>
+        Database adalah kumpulan data yang terorganisir. Bayangkan database sebagai lemari arsip di mana Anda menyimpan berbagai dokumen dan informasi penting dengan cara yang terstruktur sehingga mudah ditemukan dan digunakan kembali.
+    </p>
+
+    <h2>MySQL</h2>
+    <p>
+        MySQL adalah perangkat lunak sistem manajemen basis data (DBMS) yang menggunakan SQL sebagai bahasa untuk mengelola dan mengakses data. Bayangkan MySQL seperti pustakawan yang tahu di mana semua buku berada dan bagaimana cara mengaksesnya.
+    </p>
+
+    <h2>SQL</h2>
+    <p>
+        SQL adalah Bahasa yang digunakan untuk mengelola dan memanipulasi data di dalam database. SQL seperti bahasa komunikasi yang Anda gunakan untuk berbicara dengan pustakawan (MySQL).
+    </p>
+
+    <h2>Tabel</h2>
+    <p>
+        Tabel adalah struktur data yang terorganisir yang terdiri dari baris dan kolom. Bayangkan tabel seperti buku yang terdiri dari halaman dan baris dan kolom. Setiap rak (kolom) memiliki kategori tertentu, dan setiap buku (baris) adalah entri data di dalam kategori itu.
+    </p>
+
+    <h2>Kolom</h2>
+    <p>
+        Kolom adalah Bagian dari tabel yang menyimpan tipe data tertentu. Setiap kolom memiliki nama dan tipe data (misalnya, teks, angka). Kolom seperti label pada rak buku yang menunjukkan jenis buku (judul, penulis, tahun terbit, dll.).
+    </p>
+
+    <h2>Baris</h2>
+    <p>
+        Baris adalah Setiap entri atau record dalam tabel yang menyimpan data sesuai dengan kolom. Baris seperti buku individu dalam rak buku. Setiap buku memiliki informasi yang sesuai dengan label raknya (judul buku, penulis buku, dll.).
+    </p>
+
+    <h1>Perintah SQL</h1>
+    <p>
+        Perintah-perintah MySQL untuk mengelola database mencakup beberapa kategori utama: perintah untuk pembuatan dan pengelolaan database, perintah untuk pembuatan dan pengelolaan tabel, dan perintah untuk manipulasi data. Mari kita jelajahi perintah-perintah ini dengan detail dan contoh-contohnya.
+    </p>
+
+    <h2>Membuat Database</h2>
+    <p>
+        Untuk membuat database baru, gunakan perintah CREATE DATABASE:
+    </p>
+    <pre>
+        CREATE DATABASE nama_database;
+    </pre>
+    <p>
+        contohnya
+    </p>
+    <pre>
+        CREATE DATABASE perpustakaan;
+    </pre>
+
+    <h2>Melihat Database Yang Tersedia</h2>
+    <p>
+        Untuk melihat daftar semua database yang ada, gunakan perintah SHOW DATABASES:
+    </p>
+    <pre>
+        SHOW DATABASES;
+    </pre>
+    <p>
+        Ini akan menampilkan daftar semua database di server MySQL Anda.
+    </p>
+
+    <h2>Menggunakan Database</h2>
+    <p>
+        Untuk memilih database yang ingin Anda gunakan, gunakan perintah USE:
+    </p>
+    <pre>
+        USE nama_database;
+    </pre>
+    <p>
+        Contohnya
+    </p>
+    <pre>
+        USE perpustakaan;
+    </pre>
+    <p>
+        Ini akan mengatur perpustakaan sebagai database aktif yang Anda gunakan untuk operasi berikutnya.
+    </p>
+
+    <h2>Menghapus Database</h2>
+    <p>
+        Untuk menghapus database, gunakan perintah DROP DATABASE:
+    </p>
+    <pre>
+        DROP DATABASE nama_database;
+    </pre>
+    <p>
+        contohnya
+    </p>
+    <pre>
+        DROP DATABASE perpustakaan;
+    </pre>
+    <p>
+        Ini akan menghapus database perpustakaan dan semua tabel serta data yang ada di dalamnya.
+    </p>
+
+
+
+
+
+</body>
+</html>

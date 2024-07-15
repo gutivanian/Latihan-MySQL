@@ -1,0 +1,7 @@
+-- show databases;
+-- create database latihan1;
+-- show databases
+-- use latihan1;
+-- use coba1;
+-- drop database latihan1;
+-- show databases;

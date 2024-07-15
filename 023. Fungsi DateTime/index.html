@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi Datetime</title>
+</head>
+<body>
+    <h1>Fungsi Datetime</h1>
+    <p>
+        MySQL juga menyediakan banyak sekali function yang bisa kita gunakan untuk mengolah data tipe Date dan Time
+    </p>
+
+    <h1>CURRENT_DATE()</h1>
+    <p>
+        Mengembalikan tanggal saat ini.
+    </p>
+    <pre>
+        SELECT CURRENT_DATE();
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----------------+
+        | CURRENT_DATE() |
+        +----------------+
+        | 2024-07-11     |
+        +----------------+
+    </pre>
+
+    <h1>CURRENT_TIME()</h1>
+    <p>
+        Mengembalikan waktu saat ini.
+    </p>
+    <pre>
+        SELECT CURRENT_TIME();
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----------------+
+        | CURRENT_TIME() |
+        +----------------+
+        | 14:30:00       |
+        +----------------+
+    </pre>
+    
+    <h1>NOW()</h1>
+    <p>
+        Mengembalikan tanggal dan waktu saat ini.
+    </p>
+    <pre>
+        SELECT NOW();
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +---------------------+
+        | NOW()               |
+        +---------------------+
+        | 2024-07-11 14:30:00 |
+        +---------------------+
+    </pre>
+
+    <h1>DATE()</h1>
+    <p>
+        Mengembalikan bagian tanggal dari datetime atau timestamp.
+    </p>
+    <pre>
+        SELECT DATE('2024-07-11 14:30:00');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +-----------------------------+
+        | DATE('2024-07-11 14:30:00') |
+        +-----------------------------+
+        | 2024-07-11                  |
+        +-----------------------------+
+    </pre>
+
+    <h1>TIME()</h1>
+    <p>
+        Mengembalikan bagian waktu dari datetime atau timestamp.
+    </p>
+    <pre>
+        SELECT TIME('2024-07-11 14:30:00');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----------------------------+
+        | TIME('2024-07-11 14:30:00') |
+        +----------------------------+
+        | 14:30:00                    |
+    </p>
+
+    <h1>YEAR()</h1>
+    <p>
+        Mengembalikan tahun dari tanggal.
+    </p>
+    <pre>
+        SELECT YEAR('2024-07-11');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------------------+
+        | YEAR('2024-07-11') |
+        +--------------------+
+        | 2024               |
+        +--------------------+
+    </pre>
+
+    <h1>MONTH()</h1>
+    <p>Mengembalikan bulan dari tanggal.</p>
+    <pre>
+        SELECT MONTH('2024-07-11');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +---------------------+
+        | MONTH('2024-07-11') |
+        +---------------------+
+        | 7                   |
+        +---------------------+
+    </pre>
+    </p>
+
+    <h1>DAY()</h1>
+    <p>
+        Mengembalikan hari dari tanggal.
+    </p>
+    <pre>
+        SELECT DAY('2024-07-11');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +-------------------+
+        | DAY('2024-07-11') |
+        +-------------------+
+        | 11                |
+        +-------------------+
+    </pre>
+
+    <h1>DATE_ADD()</h1>
+    <p>
+        Menambahkan interval waktu ke tanggal.
+    </p>
+    <pre>
+        SELECT DATE_ADD('2024-07-11', INTERVAL 10 DAY);
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +-----------------------------------------+
+        | DATE_ADD('2024-07-11', INTERVAL 10 DAY) |
+        +-----------------------------------------+
+        | 2024-07-21                              |
+        +-----------------------------------------+
+    </pre>
+
+    <h1>DATEDIFF()</h1>
+    <p>
+        Menghitung selisih antara dua tanggal.
+    </p>
+    <pre>
+        SELECT DATEDIFF('2024-07-11', '2024-07-01');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------------------------------------+
+        | DATEDIFF('2024-07-11', '2024-07-01') |
+        +--------------------------------------+
+        | 10                                   |
+    </pre>
+
+    <h1>STR_TO_DATE()</h1>
+    <p>
+        Mengubah string menjadi tanggal sesuai format tertentu.
+    </p>
+    <pre>
+        SELECT STR_TO_DATE('11-07-2024', '%d-%m-%Y');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +---------------------------------------+
+        | STR_TO_DATE('11-07-2024', '%d-%m-%Y') |
+        +---------------------------------------+
+        | 2024-07-11                            |
+        +---------------------------------------+
+    </pre>
+
+    <h1>DATE_FORMAT()</h1>
+    <p>
+        Mengubah tanggal menjadi string sesuai format tertentu.
+    </p>
+    <pre>
+        SELECT DATE_FORMAT('2024-07-11', '%d/%m/%Y');
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +---------------------------------+
+        | DATE_FORMAT('2024-07-11', '%d/%m/%Y') |
+        +---------------------------------+
+        | 11/07/2024                      |
+        +---------------------------------+
+    </pre>
+
+    <h1>Fungsi Datetime Lain</h1>   
+    <table border="1">
+        <tr>
+          <th>Nama</th>
+          <th>Deskripsi</th>
+          <th>Perintah</th>
+          <th>Hasil</th>
+        </tr>
+        <tr>
+          <td>ADDDATE()</td>
+          <td>Menambahkan nilai waktu (interval) ke nilai tanggal</td>
+          <td>SELECT ADDDATE('2024-07-11', INTERVAL 10 DAY);</td>
+          <td>2024-07-21</td>
+        </tr>
+        <tr>
+          <td>ADDTIME()</td>
+          <td>Menambahkan waktu</td>
+          <td>SELECT ADDTIME('14:30:00', '2:30:00');</td>
+          <td>17:00:00</td>
+        </tr>
+        <tr>
+          <td>CONVERT_TZ()</td>
+          <td>Mengubah dari satu zona waktu ke zona waktu lain</td>
+          <td>SELECT CONVERT_TZ('2024-07-11 14:30:00', 'UTC', 'Asia/Jakarta');</td>
+          <td>2024-07-11 21:30:00</td>
+        </tr>
+        <tr>
+          <td>CURDATE()</td>
+          <td>Mengembalikan tanggal saat ini</td>
+          <td>SELECT CURDATE();</td>
+          <td>2024-07-11</td>
+        </tr>
+        <tr>
+          <td>CURRENT_DATE(), CURRENT_DATE</td>
+          <td>Sinonim untuk CURDATE()</td>
+          <td>SELECT CURRENT_DATE();</td>
+          <td>2024-07-11</td>
+        </tr>
+        <tr>
+          <td>CURRENT_TIME(), CURRENT_TIME</td>
+          <td>Sinonim untuk CURTIME()</td>
+          <td>SELECT CURRENT_TIME();</td>
+          <td>14:30:00</td>
+        </tr>
+        <tr>
+          <td>CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP</td>
+          <td>Sinonim untuk NOW()</td>
+          <td>SELECT CURRENT_TIMESTAMP();</td>
+          <td>2024-07-11 14:30:00</td>
+        </tr>
+        <tr>
+          <td>CURTIME()</td>
+          <td>Mengembalikan waktu saat ini</td>
+          <td>SELECT CURTIME();</td>
+          <td>14:30:00</td>
+        </tr>
+        <tr>
+          <td>DATE()</td>
+          <td>Mengekstrak bagian tanggal dari ekspresi tanggal atau datetime</td>
+          <td>SELECT DATE('2024-07-11 14:30:00');</td>
+          <td>2024-07-11</td>
+        </tr>
+        <tr>
+          <td>DATE_ADD()</td>
+          <td>Menambahkan nilai waktu (interval) ke nilai tanggal</td>
+          <td>SELECT DATE_ADD('2024-07-11', INTERVAL 10 DAY);</td>
+          <td>2024-07-21</td>
+        </tr>
+        <tr>
+          <td>DATE_FORMAT()</td>
+          <td>Memformat tanggal sesuai spesifikasi</td>
+          <td>SELECT DATE_FORMAT('2024-07-11', '%d/%m/%Y');</td>
+          <td>11/07/2024</td>
+        </tr>
+        <tr>
+          <td>DATE_SUB()</td>
+          <td>Mengurangi nilai waktu (interval) dari tanggal</td>
+          <td>SELECT DATE_SUB('2024-07-11', INTERVAL 10 DAY);</td>
+          <td>2024-07-01</td>
+        </tr>
+        <tr>
+          <td>DATEDIFF()</td>
+          <td>Mengurangi dua tanggal</td>
+          <td>SELECT DATEDIFF('2024-07-11', '2024-07-01');</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>DAY()</td>
+          <td>Sinonim untuk DAYOFMONTH()</td>
+          <td>SELECT DAY('2024-07-11');</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>DAYNAME()</td>
+          <td>Mengembalikan nama hari dalam minggu</td>
+          <td>SELECT DAYNAME('2024-07-11');</td>
+          <td>Kamis</td>
+        </tr>
+        <tr>
+          <td>DAYOFMONTH()</td>
+          <td>Mengembalikan hari dalam bulan (0-31)</td>
+          <td>SELECT DAYOFMONTH('2024-07-11');</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>DAYOFWEEK()</td>
+          <td>Mengembalikan indeks hari dalam minggu dari argumen</td>
+          <td>SELECT DAYOFWEEK('2024-07-11');</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>DAYOFYEAR()</td>
+          <td>Mengembalikan hari dalam tahun (1-366)</td>
+          <td>SELECT DAYOFYEAR('2024-07-11');</td>
+          <td>193</td>
+        </tr>
+        <tr>
+          <td>EXTRACT()</td>
+          <td>Mengekstrak bagian dari tanggal</td>
+          <td>SELECT EXTRACT(YEAR FROM '2024-07-11');</td>
+          <td>2024</td>
+        </tr>
+        <tr>
+          <td>FROM_DAYS()</td>
+          <td>Mengubah nomor hari menjadi tanggal</td>
+          <td>SELECT FROM_DAYS(738000);</td>
+          <td>2023-11-14</td>
+        </tr>
+        <tr>
+          <td>FROM_UNIXTIME()</td>
+          <td>Memformat Unix timestamp sebagai tanggal</td>
+          <td>SELECT FROM_UNIXTIME(1626000000);</td>
+          <td>2021-07-11 12:00:00</td>
+        </tr>
+        <tr>
+          <td>GET_FORMAT()</td>
+          <td>Mengembalikan string format tanggal</td>
+          <td>SELECT GET_FORMAT(DATE, 'EUR');</td>
+          <td>%d.%m.%Y</td>
+        </tr>
+        <tr>
+          <td>HOUR()</td>
+          <td>Mengekstrak jam</td>
+          <td>SELECT HOUR('14:30:00');</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>LAST_DAY</td>
+          <td>Mengembalikan hari terakhir dalam bulan untuk argumen</td>
+          <td>SELECT LAST_DAY('2024-07-11');</td>
+          <td>2024-07-31</td>
+        </tr>
+        <tr>
+          <td>LOCALTIME(), LOCALTIME</td>
+          <td>Sinonim untuk NOW()</td>
+          <td>SELECT LOCALTIME();</td>
+          <td>2024-07-11 14:30:00</td>
+        </tr>
+        <tr>
+          <td>LOCALTIMESTAMP, LOCALTIMESTAMP()</td>
+          <td>Sinonim untuk NOW()</td>
+          <td>SELECT LOCALTIMESTAMP();</td>
+          <td>2024-07-11 14:30:00</td>
+        </tr>
+        <tr>
+          <td>MAKEDATE()</td>
+          <td>Membuat tanggal dari tahun dan hari dalam tahun</td>
+          <td>SELECT MAKEDATE(2024, 193);</td>
+          <td>2024-07-11</td>
+        </tr>
+        <tr>
+          <td>MAKETIME()</td>
+          <td>Membuat waktu dari jam, menit, detik</td>
+          <td>SELECT MAKETIME(14, 30, 0);</td>
+          <td>14:30:00</td>
+        </tr>
+        <tr>
+          <td>MICROSECOND()</td>
+          <td>Mengembalikan mikrodetik dari argumen</td>
+          <td>SELECT MICROSECOND('14:30:00.123456');</td>
+          <td>123456</td>
+        </tr>
+        <tr>
+          <td>MINUTE()</td>
+          <td>Mengekstrak menit dari argumen</td>
+          <td>SELECT MINUTE('14:30:00');</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>MONTH()</td>
+          <td>Mengembalikan bulan dari tanggal yang diberikan</td>
+          <td>SELECT MONTH('2024-07-11');</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>MONTHNAME()</td>
+          <td>Mengembalikan nama bulan dari tanggal yang diberikan</td>
+          <td>SELECT MONTHNAME('2024-07-11');</td>
+          <td>Juli</td>
+        </tr>
+        <tr>
+          <td>NOW()</td>
+          <td>Mengembalikan tanggal dan waktu saat ini</td>
+          <td>SELECT NOW();</td>
+          <td>2024-07-11 14:30:00</td>
+        </tr>
+        <tr>
+          <td>PERIOD_ADD()</td>
+          <td>Menambahkan periode ke tahun-bulan</td>
+          <td>SELECT PERIOD_ADD(202407, 3);</td>
+          <td>202410</td>
+        </tr>
+        <tr>
+          <td>PERIOD_DIFF()</td>
+          <td>Mengembalikan jumlah bulan antara dua periode</td>
+          <td>SELECT PERIOD_DIFF(202407, 202404);</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>QUARTER()</td>
+          <td>Mengembalikan kuartal dari tanggal yang diberikan</td>
+          <td>SELECT QUARTER('2024-07-11');</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>SEC_TO_TIME()</td>
+          <td>Mengkonversi detik menjadi format 'hh:mm:ss'</td>
+          <td>SELECT SEC_TO_TIME(3661);</td>
+          <td>01:01:01</td>
+        </tr>
+        <tr>
+          <td>SECOND()</td>
+          <td>Mengekstrak detik dari argumen</td>
+          <td>SELECT SECOND('14:30:45');</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>STR_TO_DATE()</td>
+          <td>Mengkonversi string menjadi tanggal</td>
+          <td>SELECT STR_TO_DATE('10-12-2024', '%d-%m-%Y');</td>
+          <td>2024-12-10</td>
+        </tr>
+        <tr>
+          <td>SUBDATE()</td>
+          <td>Sinonim untuk DATE_SUB() ketika dipanggil dengan tiga argumen</td>
+          <td>SELECT SUBDATE('2024-07-11', INTERVAL 10 DAY);</td>
+          <td>2024-07-01</td>
+        </tr>
+        <tr>
+          <td>SUBTIME()</td>
+          <td>Mengurangi waktu</td>
+          <td>SELECT SUBTIME('14:30:00', '2:30:00');</td>
+          <td>12:00:00</td>
+        </tr>
+        <tr>
+          <td>SYSDATE()</td>
+          <td>Mengembalikan waktu eksekusi fungsi</td>
+          <td>SELECT SYSDATE();</td>
+          <td>2024-07-11 14:30:00</td>
+        </tr>
+        <tr>
+          <td>TIME()</td>
+          <td>Mengekstrak bagian waktu dari ekspresi yang diberikan</td>
+          <td>SELECT TIME('2024-07-11 14:30:00');</td>
+          <td>14:30:00</td>
+        </tr>
+        <tr>
+          <td>TIME_FORMAT()</td>
+          <td>Memformat waktu sesuai spesifikasi</td>
+          <td>SELECT TIME_FORMAT('14:30:00', '%H:%i:%s');</td>
+          <td>14:30:00</td>
+        </tr>
+        <tr>
+          <td>TIME_TO_SEC()</td>
+          <td>Mengkonversi waktu menjadi detik</td>
+          <td>SELECT TIME_TO_SEC('14:30:00');</td>
+          <td>52200</td>
+        </tr>
+        <tr>
+          <td>TIMEDIFF()</td>
+          <td>Mengurangi waktu</td>
+          <td>SELECT TIMEDIFF('14:30:00', '12:45:00');</td>
+          <td>01:45:00</td>
+        </tr>
+        <tr>
+          <td>TIMESTAMP()</td>
+          <td>Dengan satu argumen, fungsi ini mengembalikan ekspresi tanggal atau datetime; dengan dua argumen, jumlah dari argumen tersebut</td>
+          <td>SELECT TIMESTAMP('2024-07-11');</td>
+          <td>2024-07-11 00:00:00</td>
+        </tr>
+        <tr>
+          <td>TIMESTAMPADD()</td>
+          <td>Menambahkan interval ke ekspresi datetime</td>
+          <td>SELECT TIMESTAMPADD(MINUTE, 30, '2024-07-11 14:30:00');</td>
+          <td>2024-07-11 15:00:00</td>
+        </tr>
+        <tr>
+          <td>TIMESTAMPDIFF()</td>
+          <td>Mengembalikan selisih dari dua ekspresi datetime dengan satuan yang ditentukan</td>
+          <td>SELECT TIMESTAMPDIFF(MINUTE, '2024-07-11 14:00:00', '2024-07-11 15:30:00');</td>
+          <td>90</td>
+        </tr>
+        <tr>
+          <td>TO_DAYS()</td>
+          <td>Mengkonversi argumen tanggal menjadi hari</td>
+          <td>SELECT TO_DAYS('2024-07-11');</td>
+          <td>738000</td>
+        </tr>
+        <tr>
+          <td>TO_SECONDS()</td>
+          <td>Mengkonversi argumen tanggal atau datetime menjadi detik sejak Tahun 0</td>
+          <td>SELECT TO_SECONDS('2024-07-11 14:30:00');</td>
+          <td>67879950000</td>
+        </tr>
+        <tr>
+          <td>UNIX_TIMESTAMP()</td>
+          <td>Mengembalikan timestamp Unix</td>
+          <td>SELECT UNIX_TIMESTAMP('2024-07-11 14:30:00');</td>
+          <td>1718746200</td>
+        </tr>
+        <tr>
+          <td>UTC_DATE()</td>
+          <td>Mengembalikan tanggal UTC saat ini</td>
+          <td>SELECT UTC_DATE();</td>
+          <td>2024-07-11</td>
+        </tr>
+        <tr>
+          <td>UTC_TIME()</td>
+          <td>Mengembalikan waktu UTC saat ini</td>
+          <td>SELECT UTC_TIME();</td>
+          <td>07:30:00</td>
+        </tr>
+        <tr>
+          <td>UTC_TIMESTAMP()</td>
+          <td>Mengembalikan tanggal dan waktu UTC saat ini</td>
+          <td>SELECT UTC_TIMESTAMP();</td>
+          <td>2024-07-11 07:30:00</td>
+        </tr>
+        <tr>
+          <td>WEEK()</td>
+          <td>Mengembalikan nomor minggu dalam tahun</td>
+          <td>SELECT WEEK('2024-07-11');</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>WEEKDAY()</td>
+          <td>Mengembalikan indeks hari dalam minggu (0 untuk Senin, 6 untuk Minggu)</td>
+          <td>SELECT WEEKDAY('2024-07-11');</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>WEEKOFYEAR()</td>
+          <td>Mengembalikan minggu kalender dalam tahun</td>
+          <td>SELECT WEEKOFYEAR('2024-07-11');</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>YEAR()</td>
+          <td>Mengembalikan tahun dari tanggal yang diberikan</td>
+          <td>SELECT YEAR('2024-07-11');</td>
+          <td>2024</td>
+        </tr>
+        <tr>
+          <td>YEARWEEK()</td>
+          <td>Mengembalikan tahun dan minggu dalam format YYYYWW</td>
+          <td>SELECT YEARWEEK('2024-07-11');</td>
+          <td>202428</td>
+        </tr>
+      </table>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data String</title>
+</head>
+<body>
+    <h1>Tipe Data String</h1>
+    <p>
+        Tipe data string di MySQL digunakan untuk menyimpan data teks dalam berbagai format. Berikut adalah beberapa tipe data string yang umum digunakan di MySQL beserta penjelasan dan contoh-contohnya:
+    </p>
+
+    <h2>CHAR</h2>
+    <ol>
+        <li>Menyimpan string dengan panjang tetap.
+        </li>
+        <li>Jika panjang string yang dimasukkan lebih pendek dari panjang yang ditentukan, sisa karakter akan diisi dengan spasi.</li>
+    </ol>
+    <p>Contoh penggunaan: CHAR(10): Dapat menyimpan string dengan panjang tepat 10 karakter. Contoh: 'HELLO' akan disimpan sebagai 'HELLO     ' (dengan lima spasi di akhir).</p>
+
+    <h2>VARCHAR</h2>
+    <ol>
+        <li>Menyimpan string dengan panjang bersifat variabel (bisa berubah).</li>
+        <li>Lebih efisien dalam penggunaan ruang dibandingkan dengan CHAR untuk string yang bervariasi dalam panjang.</li>
+    </ol>
+    <p>
+        Contoh Penggunaan: VARCHAR(50): Dapat menyimpan string dengan panjang hingga 50 karakter. Contoh: 'HELLO' akan disimpan sebagai 'HELLO' (tanpa spasi tambahan).
+    </p>
+
+    <h2>TEXT</h2>
+    <ol>
+        <li>
+            Menyimpan string teks panjang yang tidak praktis untuk ditentukan panjangnya dengan presisi.
+        </li>
+        <li>
+            Digunakan untuk kolom yang berisi teks panjang seperti deskripsi, artikel, atau catatan.
+        </li>
+    </ol>
+    <p>
+        Contoh Penggunaan: TEXT: Dapat menyimpan string teks yang sangat panjang. Contoh: 'Ini adalah deskripsi panjang yang bisa mencakup banyak paragraf...'
+    </p>
+
+    <h2>BLOB</h2>
+    <ol>
+        <li>Menyimpan data biner besar, seperti gambar atau file.</li>
+        <li>Serupa dengan TEXT, tetapi dirancang untuk data biner.</li>
+    </ol>
+
+    <h2>ENUM</h2>
+    <ol>
+        <li>Menyimpan string yang hanya bisa memiliki salah satu dari nilai yang ditentukan.</li>
+        <li>Berguna untuk kolom yang memiliki pilihan tetap, seperti status atau kategori.</li>
+    </ol>
+    <p>
+        Contoh Penggunaan: ENUM('male', 'female', 'other'): Dapat menyimpan salah satu nilai dari 'male', 'female', atau 'other'.
+    </p>
+
+    <h2>SET</h2>
+    <ol>
+        <li>
+            Menyimpan string yang bisa berisi nol atau lebih dari nilai yang ditentukan. 
+        </li>
+        <li>
+            Berguna untuk kolom yang bisa memiliki beberapa pilihan dari sekumpulan nilai tetap.
+        </li>
+    </ol>
+    <p>
+        Contoh Penggunaan: SET('swimming', 'running', 'cycling'): Dapat menyimpan nol atau lebih nilai dari 'swimming', 'running', 'cycling'. Contoh: 'swimming,running'
+    </p>
+
+
+</body>
+</html>

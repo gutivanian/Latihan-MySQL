@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengelompokan</title>
+</head>
+<body>
+    <h1>Pengelompokan</h1>
+    <p>
+        Pengelompokan dengan GROUP BY di MySQL digunakan untuk mengelompokkan baris yang memiliki nilai yang sama dalam kolom yang ditentukan ke dalam kumpulan baris. Ini sangat berguna untuk digunakan dengan fungsi agregat seperti SUM(), AVG(), COUNT(), MAX(), dan MIN() untuk melakukan perhitungan pada setiap kelompok.
+    </p>
+
+    <h1>Contoh Dasar GROUP BY</h1>
+    <p>
+        Misalkan kita memiliki tabel employees sebagai berikut:
+    </p>
+    <pre>
+        +----+------------+--------+
+        | id | department | salary |
+        +----+------------+--------+
+        | 1  | HR         | 5000   |
+        | 2  | IT         | 6000   |
+        | 3  | HR         | 4500   |
+        | 4  | IT         | 7000   |
+        | 5  | Sales      | 5500   |
+        +----+------------+--------+
+    </pre>
+    <p>
+        Menggunakan SUM dengan GROUP BY
+    </p>
+    <pre>
+        SELECT 
+            department,
+            SUM(salary) AS total_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+-------------+
+        | department | total_salary|
+        +------------+-------------+
+        | HR         | 9500        |
+        | IT         | 13000       |
+        | Sales      | 5500        |
+        +------------+-------------+
+    </pre>
+    <p>
+        Menggunakan AVG dengan GROUP BY
+    </p>
+    <pre>
+        SELECT 
+            department,
+            AVG(salary) AS avg_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+------------+
+        | department | avg_salary |
+        +------------+------------+
+        | HR         | 4750       |
+        | IT         | 6500       |
+        | Sales      | 5500       |
+        +------------+------------+
+    </pre>
+    <p>
+        Menggunakan COUNT dengan GROUP BY
+    </p>
+    <pre>
+        SELECT 
+            department,
+            COUNT(*) AS num_employees
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+--------------+
+        | department | num_employees|
+        +------------+--------------+
+        | HR         | 2            |
+        | IT         | 2            |
+        | Sales      | 1            |
+        +------------+--------------+
+    </pre>
+
+    <h1>GROUP BY dengan HAVING</h1>
+    <p>
+        HAVING di MySQL digunakan untuk menyaring hasil setelah pengelompokan dengan GROUP BY. Berbeda dengan WHERE, yang menyaring baris sebelum pengelompokan, HAVING bekerja setelah pengelompokan dilakukan, memungkinkan penggunaan fungsi agregat dalam kondisi penyaringan
+    </p>
+    <pre>
+        SELECT column1, column2, ..., AGG_FUNC(column3)
+        FROM table_name
+        GROUP BY column1, column2, ...
+        HAVING condition;
+    </pre>
+    <p>
+        Misalkan kita memiliki tabel employees sebagai berikut:
+    </p>
+    <pre>
+        +----+------------+--------+
+        | id | department | salary |
+        +----+------------+--------+
+        | 1  | HR         | 5000   |
+        | 2  | IT         | 6000   |
+        | 3  | HR         | 4500   |
+        | 4  | IT         | 7000   |
+        | 5  | Sales      | 5500   |
+        | 6  | Sales      | 3000   |
+        +----+------------+--------+
+    </pre>
+    <p>
+        Menggunakan SUM dengan GROUP BY dan HAVING
+    </p>
+    <pre>
+        SELECT 
+            department,
+            SUM(salary) AS total_salary
+        FROM employees
+        GROUP BY department
+        HAVING total_salary > 8000;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        SELECT 
+            department,
+            SUM(salary) AS total_salary
+        FROM employees
+        GROUP BY department
+        HAVING total_salary > 8000;
+    </pre>
+    <p>
+        Menyaring hasil pengelompokan untuk hanya menampilkan departemen dengan total gaji lebih dari 8000.
+    </p>
+
+
+
+
+
+
+
+</body>
+</html>

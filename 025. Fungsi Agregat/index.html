@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi Agregat</title>
+</head>
+<body>
+    <h1>Fungsi Agregat</h1>
+    <p>
+        Fungsi agregat di MySQL digunakan untuk melakukan perhitungan pada sekumpulan nilai dan mengembalikan nilai tunggal. Fungsi-fungsi agregat umum termasuk SUM, AVG, COUNT, MAX, dan MIN.
+    </p>
+
+    <h1>SUM</h1>
+    <p>
+        Fungsi SUM digunakan untuk menjumlahkan nilai dari kolom yang dipilih. Misalkan kita memiliki tabel employees:
+    </p>
+    <pre>
+        +----+------------+--------+
+        | id | department | salary |
+        +----+------------+--------+
+        | 1  | HR         | 5000   |
+        | 2  | IT         | 6000   |
+        | 3  | HR         | 4500   |
+        | 4  | IT         | 7000   |
+        | 5  | Sales      | 5500   |
+        +----+------------+--------+
+    </pre>
+    <p>
+        Contoh Kode SQLnya
+    </p>
+    <pre>
+        SELECT 
+            department,
+            SUM(salary) AS total_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+-------------+
+        | department | total_salary|
+        +------------+-------------+
+        | HR         | 9500        |
+        | IT         | 13000       |
+        | Sales      | 5500        |
+        +------------+-------------+
+    </pre>
+
+    <h1>AVG</h1>
+    <p>
+        Fungsi AVG digunakan untuk menghitung nilai rata-rata dari kolom yang dipilih.
+    </p>
+    <pre>
+        SELECT 
+            department,
+            AVG(salary) AS avg_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+------------+
+        | department | avg_salary |
+        +------------+------------+
+        | HR         | 4750       |
+        | IT         | 6500       |
+        | Sales      | 5500       |
+        +------------+------------+
+    </pre>
+
+    <h1>COUNT</h1>
+    <p>
+        Fungsi COUNT digunakan untuk menghitung jumlah baris dalam kolom yang dipilih.
+    </p>
+    <pre>
+        SELECT 
+            department,
+            COUNT(*) AS num_employees
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+--------------+
+        | department | num_employees|
+        +------------+--------------+
+        | HR         | 2            |
+        | IT         | 2            |
+        | Sales      | 1            |
+        +------------+--------------+
+    </pre>
+
+    <h1>MAX</h1>
+    <p>
+        Fungsi MAX digunakan untuk menemukan nilai maksimum dari kolom yang dipilih.
+    </p>
+    <pre>
+        SELECT 
+            department,
+            MAX(salary) AS max_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+------------+
+        | department | max_salary |
+        +------------+------------+
+        | HR         | 5000       |
+        | IT         | 7000       |
+        | Sales      | 5500       |
+        +------------+------------+
+    </pre>
+
+    <h1>MIN</h1>
+    <p>
+        Fungsi MIN digunakan untuk menemukan nilai minimum dari kolom yang dipilih.
+    </p>
+    <pre>
+        SELECT 
+            department,
+            MIN(salary) AS min_salary
+        FROM employees
+        GROUP BY department;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+------------+
+        | department | min_salary |
+        +------------+------------+
+        | HR         | 4500       |
+        | IT         | 6000       |
+        | Sales      | 5500       |
+        +------------+------------+
+    </pre>
+
+    <h1>Fungsi Agregat Lain</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Deskripsi</th>
+                <th>Contoh Penggunaan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>AVG()</td>
+                <td>Mengembalikan nilai rata-rata dari argumen</td>
+                <td><code>SELECT AVG(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>BIT_AND()</td>
+                <td>Mengembalikan bitwise AND</td>
+                <td><code>SELECT BIT_AND(flags) FROM table_name;</code></td>
+            </tr>
+            <tr>
+                <td>BIT_OR()</td>
+                <td>Mengembalikan bitwise OR</td>
+                <td><code>SELECT BIT_OR(flags) FROM table_name;</code></td>
+            </tr>
+            <tr>
+                <td>BIT_XOR()</td>
+                <td>Mengembalikan bitwise XOR</td>
+                <td><code>SELECT BIT_XOR(flags) FROM table_name;</code></td>
+            </tr>
+            <tr>
+                <td>COUNT()</td>
+                <td>Mengembalikan jumlah baris yang dikembalikan</td>
+                <td><code>SELECT COUNT(*) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>COUNT(DISTINCT)</td>
+                <td>Mengembalikan jumlah nilai yang berbeda</td>
+                <td><code>SELECT COUNT(DISTINCT department) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>GROUP_CONCAT()</td>
+                <td>Mengembalikan string yang digabungkan</td>
+                <td><code>SELECT GROUP_CONCAT(name) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>JSON_ARRAYAGG()</td>
+                <td>Mengembalikan set hasil sebagai array JSON tunggal</td>
+                <td><code>SELECT JSON_ARRAYAGG(name) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>JSON_OBJECTAGG()</td>
+                <td>Mengembalikan set hasil sebagai objek JSON tunggal</td>
+                <td><code>SELECT JSON_OBJECTAGG(id, name) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>MAX()</td>
+                <td>Mengembalikan nilai maksimum</td>
+                <td><code>SELECT MAX(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>MIN()</td>
+                <td>Mengembalikan nilai minimum</td>
+                <td><code>SELECT MIN(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>STD()</td>
+                <td>Mengembalikan standar deviasi populasi</td>
+                <td><code>SELECT STD(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>STDDEV()</td>
+                <td>Mengembalikan standar deviasi populasi</td>
+                <td><code>SELECT STDDEV(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>STDDEV_POP()</td>
+                <td>Mengembalikan standar deviasi populasi</td>
+                <td><code>SELECT STDDEV_POP(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>STDDEV_SAMP()</td>
+                <td>Mengembalikan standar deviasi sampel</td>
+                <td><code>SELECT STDDEV_SAMP(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>SUM()</td>
+                <td>Mengembalikan jumlah total</td>
+                <td><code>SELECT SUM(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>VAR_POP()</td>
+                <td>Mengembalikan varians populasi</td>
+                <td><code>SELECT VAR_POP(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>VAR_SAMP()</td>
+                <td>Mengembalikan varians sampel</td>
+                <td><code>SELECT VAR_SAMP(salary) FROM employees;</code></td>
+            </tr>
+            <tr>
+                <td>VARIANCE()</td>
+                <td>Mengembalikan varians populasi</td>
+                <td><code>SELECT VARIANCE(salary) FROM employees;</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alias</title>
+</head>
+<body>
+    <h1>Alias</h1>
+    <p>
+        Di MySQL, Anda dapat menggunakan alias untuk memberikan nama alternatif untuk tabel atau kolom dalam sebuah query. Alias digunakan untuk membuat query lebih mudah dibaca atau untuk mengurangi panjang nama kolom atau tabel yang digunakan secara berulang dalam query yang kompleks.
+    </p>
+
+    <h1>Menggunakan Alias untuk Kolom</h1>
+    <p>
+        Anda dapat memberikan alias untuk kolom dalam pernyataan SELECT untuk membuat hasil query lebih mudah dipahami atau untuk mengubah nama kolom menjadi sesuatu yang lebih deskriptif:
+    </p>
+    <pre>
+        SELECT
+            username AS nama_pengguna,
+            email AS alamat_email
+        FROM
+            users;
+    </pre>
+    <p>
+        Di sini, username diubah namanya menjadi nama_pengguna dan email diubah namanya menjadi alamat_email. Penggunaan alias seperti ini membantu meningkatkan keterbacaan query.
+    </p>
+
+    <h1>Menggunakan Alias untuk Tabel</h1>
+    <p>
+        Anda juga dapat memberikan alias untuk tabel, meskipun tanpa menggunakan JOIN, untuk mempersingkat penulisan nama tabel dalam query:
+    </p>
+    <pre>
+        SELECT
+            u.username,
+            u.email
+        FROM
+            users AS u;
+    </pre>
+    <p>
+        Dalam contoh di atas, users AS u memberikan alias u untuk tabel users. Ini memungkinkan Anda untuk merujuk ke kolom-kolom dalam tabel users menggunakan alias u dalam seluruh pernyataan SELECT.
+    </p>
+
+    <h1>Menggunakan Alias dalam Fungsi atau Ekspresi</h1>
+    <p>
+        Alias juga bisa digunakan untuk memberi nama pada hasil dari fungsi atau ekspresi yang dihitung dalam pernyataan SELECT:
+    </p>
+    <pre>
+        SELECT
+            username,
+            YEAR(registration_date) AS tahun_pendaftaran
+        FROM
+            users;
+    </pre>
+    <p>
+        Di sini, YEAR(registration_date) mengembalikan tahun dari kolom registration_date, dan hasilnya diberi nama tahun_pendaftaran menggunakan alias.
+    </p>
+</body>
+</html>

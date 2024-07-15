@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Date Dan Time</title>
+</head>
+<body>
+    <h1>Tipe Data Date Dan Time</h1>
+    <p>
+    Tipe data date dan time di MySQL digunakan untuk menyimpan informasi tanggal dan waktu. Berikut adalah tipe data yang umum digunakan, beserta penjelasan dan contohnya:
+    </p>
+
+    <h2>DATE</h2>
+    <ol>
+        <li>Menyimpan informasi tanggal dalam format YYYY-MM-DD.</li>
+        <li>Rentang nilai yang dapat disimpan adalah dari '1000-01-01' hingga '9999-12-31'.</li>
+    </ol>
+    <p>
+        Contoh Penggunaan: Contoh Nilai: '2024-07-09' (menyimpan tanggal 9 Juli 2024).
+    </p>
+
+    <h2>DATETIME</h2>
+    <ol>
+        <li>Menyimpan informasi tanggal dan waktu dalam format YYYY-MM-DD HH:MM:SS.</li>
+        <li>Rentang nilai yang dapat disimpan adalah dari '1000-01-01 00:00:00' hingga '9999-12-31 23:59:59'.</li>
+    </ol>
+    <p>
+        Contoh Penggunaan: '2024-07-09 14:30:00' (menyimpan tanggal 9 Juli 2024 dan waktu 14:30:00).
+    </p>
+
+    <h2>TIMESTAMP</h2>
+    <ol>
+        <li>Menyimpan informasi tanggal dan waktu yang otomatis diubah ke UTC saat disimpan dan dikonversi ke waktu lokal saat diambil.</li>
+        <li>Rentang nilai yang dapat disimpan adalah dari '1970-01-01 00:00:01' UTC hingga '2038-01-19 03:14:07' UTC.</li>
+        <li>Sering digunakan untuk mencatat waktu perubahan data karena bisa secara otomatis diatur dengan CURRENT_TIMESTAMP.</li>
+    </ol>
+    <p>
+        Contoh Penggunaan: 2024-07-09 14:30:00' (menyimpan waktu dalam format UTC dan dikonversi ke waktu lokal saat diambil).
+    </p>
+
+    <h2>TIME</h2>
+    <ol>
+        <li>Menyimpan informasi waktu dalam format HH:MM:SS.</li>
+        <li>Rentang nilai yang dapat disimpan adalah dari '-838:59:59' hingga '838:59:59'.</li>
+    </ol>
+    <p>
+        Contoh Nilai: '14:30:00' (menyimpan waktu 14 jam, 30 menit, dan 0 detik).
+    </p>
+
+    <h2>YEAR</h2>
+    <ol>
+        <li>Menyimpan informasi tahun dalam format YYYY.</li>
+        <li>Rentang nilai yang dapat disimpan adalah dari '1901' hingga '2155'.</li>
+    </ol>
+
+    <h1>Ringkasan</h1>
+    <pre>
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | Tipe Data | Format                  | Contoh Nilai            | Deskripsi                                   |
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | DATE      | YYYY-MM-DD              | 2024-07-09              | Menyimpan tanggal saja                      |
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | DATETIME  | YYYY-MM-DD HH:MM:SS     | 2024-07-09 14:30:00     | Menyimpan tanggal dan waktu                 |
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | TIMESTAMP | YYYY-MM-DD HH:MM:SS     | 2024-07-09 14:30:00     | Menyimpan tanggal dan waktu dalam format UTC|
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | TIME      | HH:MM:SS                | 14:30:00                | Menyimpan waktu saja                        |
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+        | YEAR      | YYYY                    | 2024                    | Menyimpan tahun saja                        |
+        +-----------+-------------------------+-------------------------+---------------------------------------------+
+    </pre>
+
+    
+
+
+</body>
+</html>

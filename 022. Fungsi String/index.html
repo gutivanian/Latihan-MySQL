@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi String</title>
+</head>
+<body>
+    <h1>Fungsi String</h1>
+    <p>
+        SQL menyediakan berbagai fungsi string yang dapat digunakan untuk memanipulasi dan mengolah data string di dalam database. 
+    </p>
+
+    <h1>CONCAT()</h1>
+    <p>
+        Menggabungkan dua atau lebih string menjadi satu.
+    </p>
+    <pre>
+        SELECT CONCAT('Hello', ' ', 'World') AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------------+
+        | Result       |
+        +--------------+
+        | Hello World  |
+        +--------------+
+    </pre>
+
+    <h1>UPPER()</h1>
+    <p>
+        Mengubah semua karakter menjadi huruf kapital.
+    </p>
+    <pre>
+        SELECT UPPER('hello') AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------------+
+        | Result       |
+        +--------------+
+        | HELLO        |
+        +--------------+
+    </pre>
+    
+    <h1>LOWER()</h1>
+    <p>
+        Mengubah semua karakter menjadi huruf kecil.
+    </p>
+    <pre>
+        SELECT LOWER('WORLD') AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +---------+
+        | Result  |
+        +---------+
+        | world   |
+        +---------+
+    </pre>
+
+    <h1>LENGTH()</h1>
+    <p>
+        Mengembalikan panjang string.
+    </p>
+    <pre>
+        SELECT LENGTH('Hello') AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------+
+        | Result |
+        +--------+
+        | 5      |
+        +--------+
+    </pre>
+
+    <h1>SUBSTRING()</h1>
+    <p>
+        Mengambil sebagian string dari posisi tertentu.
+    </p>
+    <pre>
+        SELECT SUBSTRING('Hello World', 7) AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +--------+
+        | Result |
+        +--------+
+        | World  |
+        +--------+
+    </pre>
+
+    <h1>REPLACE()</h1>
+    <p>
+        Menggantikan bagian dari string dengan string lain.
+    </p>
+    <pre>
+        SELECT REPLACE('Hello World', 'Hello', 'Hi') AS Result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +-------------+
+        | Result      |
+        +-------------+
+        | Hi World    |
+        +-------------+
+    </pre>
+
+    <h2>Contoh Penggunaan Dalam Sebuah Tabel</h2>
+    <pre>
+        +-------------+
+        | Result      |
+        +-------------+
+        | Hi World    |
+        +-------------+
+    </pre>
+    <pre>
+        SELECT 
+            nama AS Nama,
+            UPPER(nama) AS NamaKapital,
+            LENGTH(nama) AS PanjangNama
+        FROM users;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +------------+--------------+-------------+
+        | Nama       | NamaKapital  | PanjangNama |
+        +------------+--------------+-------------+
+        | John Doe   | JOHN DOE     | 8           |
+        | Alice Lee  | ALICE LEE    | 9           |
+        | Bob Smith  | BOB SMITH    | 9           |
+        +------------+--------------+-------------+
+    </pre>
+
+    <h1>Fungsi String Lain</h1>
+    <p>
+        Fungsi string lain dapat diakses <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html">disini</a>
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

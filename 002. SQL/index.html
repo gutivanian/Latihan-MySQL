@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL</title>
+</head>
+<body>
+    <h1>SQL  (Structured Query Language)</h1>
+    <p>
+        SQL (Structured Query Language) adalah bahasa standar yang digunakan untuk mengelola dan memanipulasi basis data dalam sistem manajemen basis data (DBMS). SQL memungkinkan pengguna untuk berinteraksi dengan basis data relasional dengan menggunakan perintah-perintah yang dirancang untuk berbagai operasi seperti penyimpanan, pengambilan, pembaruan, dan penghapusan data.
+    </p>
+    <p>
+        Perintah dasar SQL:
+    </p>
+    <ol>
+        <li>DDL (Data Definition Language) digunakan untuk mendefinisikan dan mengelola struktur basis data, termasuk tabel, skema, indeks, dan constraints. </li>
+        <li>DML (Data Manipulation Language) digunakan untuk memanipulasi data dalam tabel, termasuk memasukkan, memperbarui, dan menghapus data.</li>
+        <li>DCL (Data Control Language) digunakan untuk mengendalikan hak akses ke data dalam basis data, termasuk memberikan dan mencabut izin. </li>
+        <li>TCL (Transaction Control Language) digunakan untuk mengelola transaksi dalam basis data, memastikan bahwa operasi dilakukan dengan cara yang aman dan konsisten</li>
+    </ol>
+
+    <h2>MySQL</h2>
+    <p>
+        MySQL adalah salah satu DBMS (Database Management System) paling populer yang menggunakan SQL sebagai bahasa interaksinya. MySQL adalah sistem manajemen basis data relasional open-source yang banyak digunakan untuk aplikasi web dan server. MySQL dikelola oleh Oracle Corporation dan terkenal karena kinerjanya yang cepat, kehandalannya, dan kemudahan penggunaannya.
+    </p>
+    <ul>
+        <li>Open-Source: MySQL tersedia secara gratis dengan lisensi open-source, tetapi juga memiliki versi komersial dengan fitur tambahan.</li>
+        <li>Portabilitas: MySQL dapat berjalan di berbagai platform termasuk Windows, Linux, dan macOS.</li>
+        <li>Skalabilitas dan Fleksibilitas: MySQL dapat menangani basis data kecil hingga besar dengan mudah.</li>
+        <li>Keamanan: MySQL menyediakan fitur keamanan yang kuat seperti autentikasi pengguna, enkripsi data, dan kontrol akses.</li>
+        <li>Performa Tinggi: MySQL dioptimalkan untuk memberikan kinerja tinggi dalam penanganan kueri dan transaksi</li>
+    </ul>
+
+    <h2>Menginstall dan Konfigurasi MySQL</h2>
+    <h3>Menggunakan MySQL Installer</h3>
+    <ol>
+        <li>Buka browser web dan pergi ke situs web resmi MySQL: MySQL Downloads.</li>
+        <li>Pilih "MySQL Installer for Windows" dan klik "Download".</li>
+        <li>Buka file installer yang telah kamu unduh (mysql-installer-community-x.x.x.x.msi).</li>
+        <li>Pilih tipe instalasi:</li>
+            <ul>
+                <li>Developer Default: Menginstal semua produk MySQL yang umum digunakan oleh pengembang.</li>
+                <li>Server only: Hanya menginstal MySQL Server.</li>
+                <li>Client only: Hanya menginstal alat-alat client.</li>
+                <li>Full: Menginstal semua produk MySQL.</li>
+                <li>Custom: Memungkinkan kamu untuk memilih produk apa saja yang akan diinstal. Pilih opsi ini jika kamu ingin kontrol lebih atas apa yang akan diinstal.</li>
+            </ul>
+        <li>Pada layar "Select Products and Features", pilih produk yang ingin diinstal. Biasanya, kamu memerlukan MySQL Server dan MySQL Workbench.</li>
+        <li>Klik "Next" setelah memilih produk.</li>
+        <li>Installer akan memeriksa apakah ada perangkat lunak tambahan yang diperlukan (seperti Visual Studio Redistributable).</li>
+        <li>Jika ada perangkat lunak yang diperlukan, installer akan memberikan opsi untuk mengunduh dan menginstalnya. Klik "Execute" untuk melanjutkan.</li>
+        <li>Pada layar "Installation", klik "Execute" untuk memulai instalasi produk yang dipilih.</li>
+        <li>Setelah instalasi selesai, klik "Next".</li>
+        <li>Pada layar "Product Configuration", pilih "MySQL Server" dan klik "Next".</li>
+        <li>Pilih tipe konfigurasi server:</li>
+            <ul>
+                <li>Development Machine: Untuk komputer pengembangan. Menggunakan sumber daya yang lebih sedikit.</li>
+                <li>Server Machine: Untuk server dengan beban kerja sedang.</li>
+                <li>Dedicated Machine: Untuk server yang didedikasikan hanya untuk MySQL. Menggunakan sumber daya maksimal.</li>
+            </ul>
+        <li>Klik "Next".</li>
+        <li>Pada layar "Type and Networking", pilih tipe koneksi (biasanya, gunakan pengaturan default).</li>
+        <li>Pada layar "Authentication Method", pilih metode autentikasi (biasanya, gunakan "Use Strong Password Encryption" untuk keamanan lebih baik).</li>
+        <li>Klik "Next".</li>
+        <li>Masukkan dan konfirmasi kata sandi untuk pengguna root (administrator).</li>
+        <li>Jika diinginkan, tambahkan pengguna baru dengan klik "Add User".</li>
+        <li>Klik "Next".</li>
+        <li>Pada layar "Windows Service", pilih untuk menjalankan MySQL Server sebagai layanan Windows agar dapat otomatis berjalan saat Windows dihidupkan.</li>
+        <li>Klik "Next".</li>
+        <li>Pada layar "Apply Configuration", klik "Execute" untuk menerapkan semua pengaturan dan konfigurasi.</li>
+        <li>Setelah selesai, klik "Finish".</li>
+        <li>Pada layar "Installation Complete", klik "Finish".</li>
+        <li>Buka MySQL Workbench atau MySQL Command Line Client untuk mulai menggunakan MySQL.</li>
+    </ol>
+
+    <h3>Menggunakan XAMPP</h3>
+    <ol>
+        <li>Buka browser web dan pergi ke situs web resmi XAMPP: XAMPP Downloads.</li>
+        <li>Pilih versi XAMPP untuk Windows dan klik "Download".</li>
+        <li>Buka file installer yang telah kamu unduh (xampp-windows-x.x.x-x-installer.exe).</li>
+        <li>Jika muncul jendela "User Account Control", klik "Yes" untuk melanjutkan.</li>
+        <li>Pada layar "Select Components", pastikan bahwa "MySQL" dicentang. Kamu juga bisa mencentang komponen lain seperti "Apache", "PHP", dan "phpMyAdmin" jika diperlukan.</li>
+        <li>Klik "Next" untuk melanjutkan.</li>
+        <li>Pilih folder di mana kamu ingin menginstal XAMPP. Secara default, XAMPP akan diinstal di C:\xampp</li>
+        <li>Klik "Next" untuk melanjutkan.</li>
+        <li>Pada layar "Ready to Install", klik "Next" untuk memulai proses instalasi.</li>
+        <li>Tunggu hingga proses instalasi selesai. Ini mungkin memakan waktu beberapa menit.</li>
+        <li>Setelah instalasi selesai, kamu akan melihat layar konfirmasi. Klik "Finish" untuk menyelesaikan instalasi.</li>
+        <li>XAMPP Control Panel akan otomatis terbuka.</li>
+        <li>Di XAMPP Control Panel, kamu akan melihat daftar layanan termasuk "Apache" dan "MySQL".</li>
+        <li>Klik tombol "Start" di sebelah "MySQL" untuk memulai MySQL Server.</li>
+        <li>Jika MySQL berhasil dijalankan, statusnya akan berubah menjadi hijau.</li>
+        <li>Untuk mengelola basis data MySQL, kamu dapat menggunakan phpMyAdmin, alat administrasi basis data berbasis web yang disertakan dengan XAMPP.</li>
+        <li>Buka browser web dan pergi ke URL: http://localhost/phpmyadmin/</li>
+        <li>Kamu akan masuk ke antarmuka phpMyAdmin di mana kamu bisa membuat dan mengelola basis data MySQL</li>
+        <li>Di phpMyAdmin, klik tab "Databases"</li>
+        <li>Di bagian "Create database", masukkan nama basis data yang ingin kamu buat dan klik "Create".</li>
+        <li>Setelah basis data dibuat, kamu bisa mengelolanya dengan phpMyAdmin.</li>
+        <li>Kamu bisa membuat tabel baru, memasukkan data, menjalankan kueri SQL, dan banyak lagi.</li>
+        <li>Jangan lupa masukkan xampp/mysql/bin ke dalam path di environment variable</li>
+        <li>Setelah itu, buka cmd dan cek apakah mysql telah terinstall dengan perintah "mysql -v"</li>
+    </ol>
+    <p>
+        Dengan XAMPP, kamu memiliki lingkungan pengembangan web yang lengkap termasuk MySQL. Ini sangat membantu untuk pengembangan lokal dan pengujian aplikasi web sebelum dipublikasikan di server produksi.
+    </p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

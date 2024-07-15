@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Where</title>
+</head>
+<body>
+    <h1>Operator Where</h1>
+    <p>
+        Di MySQL, klausa WHERE digunakan untuk menentukan kondisi atau kriteria yang harus dipenuhi oleh baris data yang akan diambil atau dimodifikasi dalam perintah SQL. Klausa WHERE memungkinkan Anda untuk melakukan pencarian, filtering, atau pengelompokan data berdasarkan kondisi tertentu. 
+    </p>
+
+    <h1>Penggunaan Dasar WHERE</h1>
+    <p>
+        Pada dasarnya, klausa WHERE digunakan dalam perintah SELECT, UPDATE, DELETE, dan pernyataan lainnya untuk membatasi baris data yang diproses berdasarkan kondisi tertentu. Contoh sederhana penggunaan WHERE dalam pernyataan SELECT:
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username = 'john';
+    </pre>
+    <p>
+        Pernyataan di atas akan mengambil semua kolom dari tabel users dimana nilai kolom username sama dengan 'john'
+    </p>
+
+    <h1>Operator Perbandingan dalam WHERE</h1>
+    <p>
+        Operator perbandingan digunakan untuk membandingkan nilai di dalam kondisi WHERE. Berikut adalah operator-operator perbandingan yang bisa digunakan:
+    </p>
+    
+    <h2>Equal to (=)</h2>
+    <p>
+        Membandingkan apakah nilai di kedua sisi operator sama.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username = 'john';
+    </pre>
+
+    <h2>Not equal to (<> or !=)</h2>
+    <p>
+        Membandingkan apakah nilai di kedua sisi operator tidak sama.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username <> 'john';
+    </pre>
+
+    <h2>Greater than (>) and Less than (<)</h2>
+    <p>
+        Membandingkan apakah nilai di sebelah kiri lebih besar atau lebih kecil dari nilai di sebelah kanan.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE registration_date > '2023-01-01';
+    </pre>
+
+    <h2>Greater than or equal to (>=) and Less than or equal to (<=)</h2>
+    <p>
+        Membandingkan apakah nilai di sebelah kiri lebih besar atau sama dengan atau lebih kecil atau sama dengan nilai di sebelah kanan.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE registration_date >= '2023-01-01';
+    </pre>
+
+    <h2>BETWEEN</h2>
+    <p>
+        Memeriksa apakah nilai berada di antara dua nilai tertentu (inklusif).
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE registration_date BETWEEN '2023-01-01' AND '2023-12-31';
+    </pre>
+
+    <h2>IN</h2>
+    <p>
+        Memeriksa apakah nilai ada dalam daftar nilai tertentu.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username IN ('john', 'mary', 'alice');
+    </pre>
+
+    <h2>LIKE</h2>
+    <p>
+        Digunakan untuk mencocokkan pola string menggunakan wildcard (% untuk nol atau lebih karakter dan _ untuk satu karakter).
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username LIKE 'j%';
+    </pre>
+
+    <h2>IS NULL dan IS NOT NULL</h2>
+    <p>
+        Memeriksa apakah nilai kolom NULL atau tidak NULL.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE email IS NULL;
+    </pre>
+
+    <h1>Operator Logika dalam WHERE</h1>
+    <p>
+        Operator logika digunakan untuk menggabungkan kondisi dalam klausa WHERE:
+    </p>
+
+    <h2>AND</h2>
+    <p>
+        Memeriksa apakah dua kondisi bernilai TRUE.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username = 'john' AND email = 'john@email.com';
+    </pre>
+
+    <h2>OR</h2>
+    <p>
+        Memeriksa apakah setidaknya salah satu dari dua kondisi bernilai TRUE.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE username = 'john' OR username = 'mary';
+    </pre>
+
+    <h2>NOT</h2>
+    <p>
+        Membalikkan hasil kondisi.
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE NOT username = 'john';
+    </pre>
+
+    <h1>Kombinasi Kondisi</h1>
+    <p>
+        Anda dapat mengombinasikan operator perbandingan dan logika untuk menciptakan kondisi yang lebih kompleks:
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE (username = 'john' OR username = 'mary')
+        AND registration_date >= '2023-01-01';
+    </pre>
+    <p>
+        Pernyataan di atas akan mengambil semua kolom dari tabel users dimana username adalah 'john' atau 'mary' dan registration_date lebih besar atau sama dengan '2023-01-01'.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Number</title>
+</head>
+<body>
+    <h1>Tipe Data Number</h1>
+    <p>
+        Di MySQL, tipe data number umumnya merujuk pada beberapa tipe data numerik yang tersedia untuk menyimpan nilai numerik dalam basis data. Berikut adalah beberapa tipe data numerik yang sering digunakan dalam MySQL:
+    </p>
+
+    <h1>Integer</h1>
+    <p>
+        Tipe data ini digunakan untuk menyimpan bilangan bulat. Di MySQL, variasi dari tipe data INTEGER meliputi: 
+    </p>
+    <ol>
+        <li>TINYINT: Rentang nilai dari -128 sampai 127 (signed) atau 0 sampai 255 (unsigned).</li>
+        <li>SMALLINT: Rentang nilai dari -32,768 sampai 32,767 (signed) atau 0 sampai 65,535 (unsigned).</li>
+        <li>MEDIUMINT: Rentang nilai dari -8,388,608 sampai 8,388,607 (signed) atau 0 sampai 16,777,215 (unsigned).</li>
+        <li>INT atau INTEGER: Rentang nilai dari -2,147,483,648 sampai 2,147,483,647 (signed) atau 0 sampai 4,294,967,295 (unsigned).</li>
+        <li>BIGINT: Rentang nilai dari -9,223,372,036,854,775,808 sampai 9,223,372,036,854,775,807 (signed) atau 0 sampai 18,446,744,073,709,551,615 (unsigned).</li>
+    </ol>
+    <p>
+        Perbedaan antara TINYINT, SMALLINT, MEDIUMINT, INT, dan BIGINT terutama berkaitan dengan rentang nilai yang dapat disimpan dan ukuran penyimpanannya. Pemilihan tipe data yang sesuai sangat penting dalam desain basis data karena akan mempengaruhi efisiensi penyimpanan dan kinerja aplikasi
+    </p>
+    <p>
+        Semakin besar rentang nilai yang dapat disimpan oleh tipe data, semakin besar pula ukuran penyimpanannya. Misalnya, TINYINT membutuhkan 1 byte untuk penyimpanan, sementara BIGINT membutuhkan 8 byte. Dalam skenario di mana data hanya memerlukan rentang nilai yang lebih kecil, menggunakan tipe data yang lebih kecil seperti TINYINT atau SMALLINT dapat menghemat ruang penyimpanan.
+    </p>
+    <p>
+        Tipe data yang lebih kecil cenderung lebih efisien dalam hal penggunaan memori dan operasi basis data. Ketika menggunakan tipe data yang paling sesuai dengan kebutuhan, Anda dapat meningkatkan performa aplikasi karena basis data dapat menangani data dengan lebih efisien.
+    </p>
+
+    <h1>Decimal</h1>
+    <p>
+        Tipe data ini digunakan untuk menyimpan bilangan pecahan (decimal) dengan presisi tertentu. Contoh: DECIMAL(precision, scale), di mana precision menunjukkan total digit (termasuk desimal) dan scale menunjukkan jumlah digit di belakang koma. Sebagai contoh DECIMAL(7, 2) mengizinkan kita untuk menyimpan harga yang memiliki total 7 digit, dengan 2 digit di belakang koma. Contoh nilai yang disimpan: 123.45, 999.00, 12345.67 dengan maksimal nilai adalah 99999.99 dan minimal -99999.99.
+    </p>
+
+    <h1>Float atau Double</h1>
+    <p>
+        FLOAT dan DOUBLE adalah tipe data numerik dalam MySQL yang digunakan untuk menyimpan bilangan pecahan (floating-point numbers). Mereka berbeda dalam presisi dan rentang nilai yang dapat disimpan.
+    </p>
+    <h2>Float</h2>
+    <p>
+        FLOAT adalah tipe data yang digunakan untuk menyimpan bilangan pecahan dengan presisi tunggal (single-precision floating-point). Ini berarti bilangan pecahan disimpan dengan 4 byte (32-bit). Rentang nilai yang dapat disimpan dalam FLOAT adalah dari -3.402823466E+38 sampai -1.175494351E-38, 0, dan dari 1.175494351E-38 sampai 3.402823466E+38. FLOAT cocok digunakan ketika presisi angka desimal yang sangat tinggi tidak diperlukan, seperti dalam perhitungan ilmiah atau teknik.
+    </p>
+    
+    <h2>Double</h2>
+    <p>
+        DOUBLE adalah tipe data yang digunakan untuk menyimpan bilangan pecahan dengan presisi ganda (double-precision floating-point). Ini berarti bilangan pecahan disimpan dengan 8 byte (64-bit). Rentang nilai yang dapat disimpan dalam DOUBLE adalah dari -1.7976931348623157E+308 sampai -2.2250738585072014E-308, 0, dan dari 2.2250738585072014E-308 sampai 1.7976931348623157E+308. DOUBLE menyediakan presisi yang lebih tinggi dibandingkan dengan FLOAT dan cocok digunakan dalam aplikasi yang memerlukan presisi yang sangat tinggi, seperti keuangan atau ilmu pengetahuan.
+    </p>
+
+    <h1>Bit</h1>
+    <p>
+        Tipe data BIT dalam MySQL digunakan untuk menyimpan nilai-nilai bit, yang dapat digunakan untuk menyimpan bit-field atau nilai boolean yang disimpan dalam bentuk biner. Ini memungkinkan representasi efisien dari serangkaian nilai boolean atau set bit dalam satu kolom.
+    </p>
+    <p>
+        Tipe data BIT menyimpan nilai dalam bentuk biner, yang memungkinkan penggunaan ruang penyimpanan yang minimal. Contoh, BIT(1) memungkinkan Anda menyimpan satu bit data (0 atau 1) dalam 1 byte. Anda dapat menentukan panjang bit-field yang diinginkan dengan menggunakan BIT(length). Misalnya, BIT(8) memungkinkan penyimpanan 8 bit data, atau 1 byte. Tipe data BIT sering digunakan dalam situasi di mana Anda perlu menyimpan serangkaian nilai boolean atau flags dalam satu kolom, untuk menghemat ruang penyimpanan dan meningkatkan kinerja operasi bit.
+    </p>
+    <pre>
+        --------------------------------------------------------
+        | id |     nama     |     preferensi (BIT(8))            |
+        --------------------------------------------------------
+        | 1  |   John Doe   |             B'10101010'            |
+        --------------------------------------------------------
+        | 2  |  Jane Smith  |             B'11001100'            |
+        --------------------------------------------------------
+    </pre>
+    <p>
+        Dalam contoh ini Kolom preferensi adalah kolom yang menggunakan tipe data BIT(8), yang menunjukkan bit-field untuk menyimpan preferensi pengguna. Contoh nilai-bit (B'10101010' dan B'11001100') menunjukkan serangkaian nilai boolean atau flags yang disimpan dalam format biner.
+    </p>
+
+    <h1>Atribut Bilangan</h1>
+    <p>
+        Di MySQL, atribut-atribut yang dapat diterapkan pada tipe data bilangan (numerik) memungkinkan Anda untuk mengontrol berbagai aspek seperti ukuran, sign, dan behavior default. Berikut adalah beberapa atribut yang umum digunakan untuk tipe data bilangan di MySQL:
+    </p>
+    <h2>UNSIGNED</h2>
+    <p>
+        Memungkinkan nilai untuk hanya menyimpan nilai non-negatif. Contoh: 30000, 12345.67
+    </p>
+    <h2>ZEROFILL</h2>
+    <p>
+        Menambahkan nol di depan nilai jika panjang digit tidak mencapai panjang yang ditentukan. Contoh: 123 menjadi 00123 untuk INT(5) ZEROFILL. 
+    </p>
+
+    <h2>AUTO_INCREMENT</h2>
+    <p>
+        Menambahkan nilai unik yang bertambah secara otomatis ketika memasukkan data baru. Produk pertama memiliki ID 1, produk kedua memiliki ID 2, dan seterusnya.
+    </p>
+
+    <h2>DEFAULT</h2>
+    <p>
+        Menetapkan nilai default untuk kolom jika nilai tidak disediakan saat memasukkan data baru. Seorang karyawan bernama "John Doe" dimasukkan tanpa disertakan usia, maka usianya akan dianggap 30 tahun.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

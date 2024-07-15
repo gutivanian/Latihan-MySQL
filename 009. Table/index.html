@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <h1>Table</h1>
+    <p>
+        Di MySQL, sebuah "table" (tabel) adalah struktur dasar untuk menyimpan dan mengatur data dalam basis data. Secara umum, sebuah tabel terdiri dari kolom-kolom yang mendefinisikan jenis data yang disimpan, dan baris-baris yang berisi nilai-nilai data yang sesuai dengan kolom-kolom tersebut. B
+    </p>
+
+    <h1>Struktur Tabel</h1>
+    <ol>
+        <li> Nama Tabel:
+            <ul>
+                <li>Setiap tabel memiliki nama yang unik di dalam basis data MySQL.</li>
+                <li>Nama tabel dapat mengandung huruf, angka, dan karakter khusus tertentu seperti _ (underscore), tetapi tidak boleh dimulai dengan angka atau mengandung spasi.</li>
+            </ul>
+        </li>
+        <li> Kolom (Column):
+            <ul>
+                <li>Setiap tabel terdiri dari satu atau lebih kolom.</li>
+                <li>Setiap kolom memiliki nama yang unik di dalam tabel.</li>
+                <li>Kolom mendefinisikan jenis data yang akan disimpan dalam tabel, seperti INTEGER, VARCHAR, DATE, BOOLEAN, dan sebagainya.</li>
+                <li>Kolom juga dapat memiliki atribut seperti PRIMARY KEY, NOT NULL, DEFAULT, AUTO_INCREMENT, dan lainnya untuk mengatur karakteristik dan perilaku data yang disimpan.</li>
+            </ul>
+        </li>
+        <li> Baris (Row):
+            <ul>
+                <li>Baris-baris (atau kadang disebut sebagai record atau tuple) adalah entitas individual yang menyimpan nilai-nilai data untuk setiap kolom dalam tabel.</li>
+                <li>Setiap baris diidentifikasi secara unik oleh nilai dari kolom atau kolom-kolom yang berperan sebagai kunci utama (PRIMARY KEY).</li>
+            </ul>
+        </li>
+    </ol>
+    <p>Contoh table di mySQL</p>
+    <pre>
+        ---------------------------------------------------------
+        | id | username   | email                   | is_active |
+        ---------------------------------------------------------
+        | 1  | john_doe   | john.doe@example.com    | 1         |
+        | 2  | jane_smith | jane.smith@example.com  | 0         |
+        ---------------------------------------------------------
+    </pre>
+    <p>
+        Penjelasan tabel di atas:
+    </p>
+    <ol>
+        <li>Nama Tabel: users</li>
+        <li>Kolom:
+            <ul>
+                <li>id: Kolom integer yang merupakan primary key dan auto-increment.</li>
+                <li>username: Kolom teks untuk menyimpan nama pengguna.</li>
+                <li>email: Kolom teks untuk menyimpan alamat email pengguna.</li>
+                <li>is_active: Kolom boolean yang menggunakan TINYINT(1) untuk menyimpan status aktif (1) atau tidak aktif (0).</li>
+            </ul>
+        </li>
+        <li>
+            Baris:
+            <ul>
+                <li>Terdapat dua baris data pada tabel ini.</li>
+                <li>Setiap baris mewakili satu pengguna dengan nilai-nilai yang sesuai untuk setiap kolom.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h1>Storage Engine (OPTIONAL)</h1>
+    <p>
+        Di MySQL, "storage engine" (mesin penyimpanan) merujuk kepada bagaimana data fisik disimpan dan diatur di dalam tabel. Setiap tabel dalam MySQL dapat menggunakan storage engine yang berbeda, tergantung pada kebutuhan aplikasi dan jenis operasi yang sering dilakukan terhadap tabel tersebut. Berikut adalah penjelasan mengenai storage engine tabel di MySQL:
+    </p>
+
+    <h2>1. InnoDB</h2>
+    <p>
+        Karakteristik Utama:
+    </p>
+    <ul>
+        <li>Mendukung transaksi ACID (Atomicity, Consistency, Isolation, Durability).</li>
+        <li>Menggunakan locking baris dan multi-version concurrency control (MVCC) untuk menghindari konflik dan meningkatkan kinerja dalam penggunaan transaksi.</li>
+        <li>Mendukung constraint referensial (foreign key) untuk menjaga integritas data antar-tabel.</li>
+        <li>Memiliki dukungan yang baik untuk pemulihan setelah kegagalan sistem (crash recovery).</li>
+    </ul>
+    <p>
+        Kapan Menggunakan:
+    </p>
+    <ul>
+        <li>Cocok untuk aplikasi yang membutuhkan dukungan transaksi, referential integrity, dan tingkat keamanan tinggi.</li>
+    </ul>
+
+    <h2>2. MyISAM</h2>
+    <p>
+        Karakteristik Utama:
+    </p>
+    <ul>
+        <li>Menggunakan locking tabel, bukan baris, yang dapat menyebabkan masalah performa dalam lingkungan dengan banyak tulisan dan baca secara bersamaan.</li>
+        <li>Tidak mendukung transaksi ACID, sehingga tidak cocok untuk aplikasi yang memerlukan konsistensi transaksional.</li>
+        <li>Mendukung indeks teks penuh (full-text index) yang dapat digunakan untuk pencarian teks lengkap.</li>
+    </ul>
+    <p>
+        Kapan Menggunakan:
+    </p>
+    <ul>
+        <li>
+            Cocok untuk aplikasi yang mengutamakan kinerja baca cepat, seperti aplikasi pembacaan data statis atau pencarian yang intensif.
+        </li>
+    </ul>
+
+    <h2>3. MEMORY (HEAP)</h2> 
+    <p>
+        Karakteristik Utama:
+    </p>  
+    <ul>
+        <li>Tabel-tabel MEMORY disimpan sepenuhnya di dalam memori, yang membuat aksesnya sangat cepat.</li>
+        <li>Data di tabel MEMORY tidak persisten di antara restart server MySQL.</li>
+        <li>Menggunakan locking tabel, bukan baris, yang membatasi penggunaan dalam lingkungan dengan banyak tulisan dan baca secara bersamaan.</li>
+    </ul>
+    <p>
+        Kapan Menggunakan:
+    </p>
+    <ul>
+        <li>Cocok untuk tabel-tabel sementara yang membutuhkan akses cepat, seperti tabel-tabel cache atau tabel-tabel sesi.</li>
+    </ul>
+
+    <h2>4. CSV</h2>
+    <p>Karakteristik Utama:</p>
+    <ul>
+        <li>Tabel-tabel CSV disimpan dalam format file CSV di sistem file.</li>
+        <li>Hanya mendukung indeks pada kolom-kolom yang merupakan bagian dari kunci utama.</li>
+        <li>Tidak mendukung transaksi ACID.</li>
+    </ul>
+    <p>Kapan Menggunakan:</p>
+    <ul>
+        <li>Cocok untuk pertukaran data yang mudah dengan aplikasi luar, atau sebagai penyimpanan data sementara.</li>
+    </ul>
+
+    <h2>Memilih Engine Yang Tepat</h2>
+    <ul>
+        <li>Pemilihan storage engine harus mempertimbangkan kebutuhan aplikasi seperti konsistensi transaksi, kinerja baca-tulis, dan dukungan untuk fitur-fitur khusus seperti pencarian teks penuh.</li>
+        <li>MySQL mendukung perubahan storage engine untuk tabel yang sudah ada, meskipun dengan beberapa batasan tergantung pada tipe operasi yang dilakukan pada tabel.</li>
+    </ul>
+    <p>Mulai dari MySQL 8.0, mesin penyimpanan default yang disarankan adalah InnoDB. InnoDB telah menjadi mesin penyimpanan default yang direkomendasikan oleh MySQL untuk kebanyakan kasus penggunaan karena fitur-fitur transaksionalnya yang kuat dan kemampuan untuk mengelola data secara lebih aman dan konsisten.</p>
+
+    <h2>Melihat Daftar Storage Engines</h2>
+    <p>
+        Untuk melihat daftar storage engines yang tersedia dan aktif dalam instalasi MySQL Anda, Anda dapat menggunakan perintah SQL SHOW ENGINES. Berikut langkah-langkahnya:
+    </p>
+    <ol>
+        <li>Gunakan client MySQL seperti MySQL Command Line Client atau MySQL Workbench untuk terhubung ke server MySQL Anda.</li>
+        <li>
+            Ketik perintah berikut dan tekan Enter:
+            <pre>
+                SHOW ENGINES;
+            </pre>
+        </li>
+        <li>
+            Anda akan melihat daftar semua mesin penyimpanan yang tersedia beserta status dan keterangan tambahan.
+        </li>
+        <pre>
+            mysql> SHOW ENGINES;
+            +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+            | Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
+            +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+            | InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+            | MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+            | MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+            | BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+            | MyISAM             | YES     | Non-transactional engine with good performance and small footprint | NO           | NO   | NO         |
+            | CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+            | PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+            | ROCKSDB            | YES     | RocksDB storage engine                                         | NO           | NO   | NO         |
+            +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+            8 rows in set (0.00 sec)
+
+        </pre>
+    </ol>
+
+    <h1>Membuat Tabel</h1>
+    <p>
+        Untuk membuat tabel dalam MySQL, Anda dapat menggunakan perintah SQL CREATE TABLE. Ketika Anda membuat tabel, Anda dapat menentukan atau tidak menentukan engine (mesin penyimpanan) yang digunakan untuk tabel tersebut. Berikut adalah contoh bagaimana Anda dapat membuat tabel dengan dan tanpa menentukan engine:
+    </p>
+
+    <h2>Membuat Tabel dengan Engine Spesifik</h2>
+    <p>
+        Misalkan kita ingin membuat tabel users dengan menggunakan engine InnoDB:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            is_active TINYINT(1) DEFAULT 1
+        ) ENGINE=InnoDB;
+    </pre>
+    <p>
+        Penjelasan:
+    </p>
+    <ul>
+        <li>Tabel users memiliki kolom id, username, email, dan is_active.</li>
+        <li>id adalah primary key yang otomatis bertambah (AUTO_INCREMENT).</li>
+        <li>Kolom username dan email harus diisi (NOT NULL).</li>
+        <li>Kolom is_active adalah boolean (TINYINT(1)) dengan default 1.</li>
+        <li>ENGINE=InnoDB menentukan bahwa tabel akan menggunakan mesin penyimpanan InnoDB.</li>
+    </ul>
+
+    <h2>Membuat Tabel tanpa Menentukan Engine (Menggunakan Default)</h2>
+    <p>
+        Jika Anda tidak menentukan engine secara eksplisit, MySQL akan menggunakan engine default yang telah dikonfigurasi. Sebagai contoh, jika InnoDB adalah engine default:
+    </p>
+    <pre>
+        CREATE TABLE products (
+            product_id INT AUTO_INCREMENT PRIMARY KEY,
+            product_name VARCHAR(100) NOT NULL,
+            price DECIMAL(10, 2) NOT NULL
+        );
+    </pre>
+    <p>
+        Penjelasan:
+    </p>
+    <ul>
+        <li>Tabel products memiliki kolom product_id, product_name, dan price.</li>
+        <li>product_id adalah primary key yang otomatis bertambah (AUTO_INCREMENT).</li>
+        <li>Kolom product_name dan price harus diisi (NOT NULL).</li>
+        <li>Karena tidak ada ENGINE= yang ditentukan, MySQL akan menggunakan engine default (misalnya, InnoDB jika itu adalah engine default yang dikonfigurasi).</li>
+    </ul>
+
+    <h2>Menggunakan Storage Engine Lain</h2>
+    <p>
+        Jika Anda ingin menggunakan storage engine selain yang default, Anda dapat menentukannya secara eksplisit setelah CREATE TABLE. Misalnya, untuk menggunakan MyISAM:
+    </p>
+    <pre>
+        CREATE TABLE logs (
+            log_id INT AUTO_INCREMENT PRIMARY KEY,
+            log_message TEXT,
+            log_date DATETIME
+        ) ENGINE=MyISAM;
+    </pre>
+    <p>
+        Dalam semua contoh di atas, perintah CREATE TABLE digunakan untuk membuat tabel baru dengan struktur dan spesifikasi kolom yang ditentukan, serta pilihan untuk menentukan engine sesuai kebutuhan aplikasi dan kinerja yang diinginkan.
+    </p>
+
+    <h1>Melihat Tabel</h1>
+    <p>
+        Untuk melihat daftar tabel yang ada dalam basis data MySQL Anda, Anda dapat menggunakan perintah SHOW TABLES. Berikut ini langkah-langkahnya:
+    </p>
+    <ol>
+        <li>Gunakan client MySQL seperti MySQL Command Line Client atau MySQL Workbench untuk terhubung ke server MySQL Anda.</li>
+        <li> Ketik perintah berikut dan tekan Enter:
+            <pre>
+                SHOW TABLES;
+            </pre>
+            Misalnya, jika Anda ingin melihat tabel-tabel dalam basis data mydatabase:
+            <pre>
+                SHOW TABLES FROM mydatabase;
+            </pre>
+        </li>
+        <li>
+            Anda akan melihat daftar semua tabel yang ada dalam basis data yang Anda pilih. Contoh output SHOW TABLES mungkin seperti ini:
+            <pre>
+                mysql> SHOW TABLES;
+                +----------------------+
+                | Tables_in_mydatabase |
+                +----------------------+
+                | users                |
+                | products             |
+                | logs                 |
+                +----------------------+
+                3 rows in set (0.00 sec)
+            </pre>
+        </li>
+    </ol>
+
+    <h1>Melihat Struktur dan Detail dari Tabel</h1>
+    <p>
+        Untuk melihat struktur atau definisi dari sebuah tabel dalam MySQL, Anda dapat menggunakan beberapa perintah SQL seperti DESCRIBE, DESC, atau SHOW CREATE TABLE. Berikut adalah penjelasan singkat dan contoh penggunaan masing-masing perintah ini:
+    </p>
+    <h2>1. DESCRIBE atau DESC</h2>
+    <p>
+        Perintah DESCRIBE atau DESC digunakan untuk menampilkan struktur kolom dari sebuah tabel:
+    </p>
+    <pre>
+        DESCRIBE nama_tabel;
+    </pre>
+    <p>atau</p>
+    <pre>
+        DESC nama_tabel;
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        DESCRIBE users;
+    </pre>
+    <p>
+        Output dari perintah tersebut akan menampilkan informasi kolom seperti nama kolom, tipe data, atribut (seperti NULL atau NOT NULL), default value, dan lainnya.
+    </p>
+
+    <h2>2. SHOW CREATE TABLE</h2>
+    <p>
+        Perintah SHOW CREATE TABLE digunakan untuk menampilkan pernyataan CREATE TABLE yang digunakan untuk membuat sebuah tabel:
+    </p>
+    <pre>
+        SHOW CREATE TABLE nama_tabel;
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        SHOW CREATE TABLE users;
+    </pre>
+    <p>
+        Output dari perintah ini akan menampilkan pernyataan SQL lengkap yang dapat digunakan untuk membuat kembali tabel tersebut, termasuk semua detail seperti definisi kolom, indeks, constraint, dan engine yang digunakan.
+    </p>
+
+    <h2>Perbedaan Penggunaan</h2>
+    <ul>
+        <li>DESCRIBE atau DESC: Digunakan untuk melihat struktur kolom tabel secara singkat, cocok untuk mendapatkan informasi cepat tentang nama kolom, tipe data, dan atribut dasar.</li>
+        <li>SHOW CREATE TABLE: Digunakan untuk melihat pernyataan lengkap CREATE TABLE, berguna untuk memahami secara mendalam struktur tabel beserta semua konfigurasi seperti indeks, constraint, dan engine yang digunakan.</li>
+    </ul>
+
+    <h1>Mengubah Data</h1>
+    <p>
+        Untuk mengubah struktur atau konfigurasi sebuah tabel yang sudah ada dalam MySQL, Anda dapat menggunakan perintah ALTER TABLE. Perintah ini memungkinkan Anda untuk menambah, menghapus, atau memodifikasi kolom, indeks, dan konstrain di dalam tabel. Berikut adalah cara-cara umum untuk menggunakan ALTER TABLE:
+    </p>
+
+    <h2>Mengubah Kolom Baru</h2>
+    <p>
+        Untuk menambahkan kolom baru ke sebuah tabel, Anda dapat menggunakan perintah ALTER TABLE dengan klausa ADD COLUMN:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        ADD COLUMN nama_kolom tipe_data atribut;
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        ALTER TABLE users
+        ADD COLUMN phone_number VARCHAR(20) AFTER email;
+    </pre>
+    <p>
+        Perintah di atas akan menambahkan kolom phone_number dengan tipe data VARCHAR(20) setelah kolom email dalam tabel users.
+    </p>
+
+    <h2>Mengubah Kolom</h2>
+    <p>
+        Untuk mengubah tipe data atau atribut kolom yang sudah ada, gunakan klausa MODIFY COLUMN dalam ALTER TABLE:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        MODIFY COLUMN nama_kolom tipe_data atribut;
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        ALTER TABLE users
+        MODIFY COLUMN phone_number VARCHAR(15) NOT NULL;
+    </pre>
+    <p>
+        Perintah di atas akan mengubah kolom phone_number dalam tabel users agar menjadi VARCHAR(15) dan tidak boleh kosong (NOT NULL).
+    </p>
+
+    <h2>Menghapus Kolom</h2>
+    <p>
+        Untuk menghapus kolom dari sebuah tabel, gunakan klausa DROP COLUMN dalam ALTER TABLE:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        DROP COLUMN nama_kolom;
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        ALTER TABLE users
+        DROP COLUMN phone_number;
+    </pre>
+    <p>Perintah di atas akan menghapus kolom phone_number dari tabel users.</p>
+
+    <h2>Menambah Indeks</h2>
+    <p>
+        Untuk menambahkan indeks baru ke sebuah tabel, gunakan klausa ADD INDEX dalam ALTER TABLE:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        ADD INDEX nama_indeks (nama_kolom);
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        ALTER TABLE users
+        ADD INDEX idx_username (username);
+    </pre>
+    <p>
+        Perintah di atas akan menambahkan indeks dengan nama idx_username pada kolom username di tabel users.
+    </p>
+
+    <h2>Menambah atau Mengubah Constraint</h2>
+    <p>
+        Untuk menambahkan atau mengubah constraint (seperti PRIMARY KEY, FOREIGN KEY, atau UNIQUE), gunakan klausa ADD CONSTRAINT dalam ALTER TABLE:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        ADD CONSTRAINT nama_constraint jenis_constraint (nama_kolom);
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        ALTER TABLE users
+        ADD CONSTRAINT pk_users PRIMARY KEY (id);
+    </pre>
+    <p>
+        Perintah di atas akan menambahkan constraint PRIMARY KEY pada kolom id di tabel users.
+    </p>
+
+    <h1>Nilai Null</h1>
+    <p>
+        Null value dalam konteks basis data mengacu pada nilai yang tidak ada atau tidak diketahui. Di MySQL, dan dalam banyak sistem basis data lainnya, NULL digunakan untuk menunjukkan bahwa nilai untuk sebuah kolom tidak ada atau tidak terdefinisi. Operasi perbandingan dengan NULL menggunakan operator IS NULL atau IS NOT NULL karena NULL tidak sama dengan nilai apa pun, termasuk NULL itu sendiri. Jika tidak diberikan nilai eksplisit untuk kolom yang dapat bernilai NULL, MySQL biasanya akan mengisinya dengan NULL secara default, kecuali kolom memiliki nilai default lain atau didefinisikan sebagai NOT NULL. 
+    </p>
+    <p>
+        Misalkan kita memiliki tabel users dengan kolom first_name yang boleh kosong:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(50)
+        );
+    </pre>
+
+    <h1>Default Value</h1>
+    <p>
+        Default value dalam konteks basis data MySQL mengacu pada nilai yang akan diatur secara otomatis untuk sebuah kolom jika tidak ada nilai yang disediakan saat data baru dimasukkan ke dalam tabel. Default value dapat diatur untuk hampir semua jenis data yang didukung oleh MySQL, termasuk teks, angka, tanggal, dan lain-lain. 
+    </p>
+    <p>
+        Untuk menetapkan default value untuk sebuah kolom pada saat membuat tabel, gunakan klausa DEFAULT di dalam definisi kolom:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            registration_date DATE DEFAULT CURRENT_DATE
+        );
+    </pre>
+    <p>
+        Dalam contoh di atas, registration_date memiliki default value CURRENT_DATE, yang akan secara otomatis mengisi kolom tersebut dengan tanggal saat data baru dimasukkan ke dalam tabel.
+    </p>
+    <p>
+        Default value bisa berupa:
+    </p>
+    <ul>
+        <li>Constant Value: Misalnya, DEFAULT 0 untuk angka atau DEFAULT 'guest' untuk teks.</li>
+        <li>Function: Seperti DEFAULT CURRENT_TIMESTAMP untuk timestamp saat ini atau DEFAULT CURRENT_DATE untuk tanggal saat ini.</li>
+        <li>NULL: Meskipun tidak dianjurkan, default value juga bisa diatur sebagai NULL.</li>
+    </ul>
+
+    <p>
+        Anda dapat mengubah default value untuk sebuah kolom yang sudah ada menggunakan perintah ALTER TABLE:
+    </p>
+    <pre>
+        ALTER TABLE users
+        ALTER COLUMN registration_date SET DEFAULT '2023-01-01';
+    </pre>
+    <p>
+        Perintah di atas akan mengubah default value kolom registration_date dari CURRENT_DATE menjadi tanggal tertentu ('2023-01-01').
+    </p>
+    <p>
+        Untuk menghapus default value dari sebuah kolom, gunakan perintah ALTER TABLE dengan klausa ALTER COLUMN:
+    </p>
+    <pre>
+        ALTER TABLE users
+        ALTER COLUMN registration_date DROP DEFAULT;
+    </pre>
+    <p>
+        Dengan perintah di atas, default value untuk kolom registration_date akan dihapus.
+    </p>
+
+    <h1>Membuat Ulang Tabel</h1>
+    <p>
+        Untuk "membuat ulang" (recreate) sebuah tabel dengan menghapus semua data yang ada di dalamnya, Anda bisa menggunakan perintah TRUNCATE TABLE di MySQL. Perintah ini menghapus semua baris dari tabel, tetapi struktur tabel dan definisi kolomnya tetap tidak berubah. Berikut langkah-langkahnya:
+    </p>
+    <ol>
+        <li>
+            Gunakan perintah TRUNCATE TABLE diikuti dengan nama tabel yang ingin Anda kosongkan data-datanya.
+            <pre>
+                TRUNCATE TABLE nama_tabel;
+            </pre>
+            Misalnya, jika Anda ingin mengosongkan tabel users:
+            <pre>
+                TRUNCATE TABLE users;
+            </pre>
+        </li>
+        <li>
+            Perlu dicatat bahwa TRUNCATE TABLE akan menghapus semua data di dalam tabel tanpa mempengaruhi struktur atau definisi kolomnya. Ini berbeda dengan DROP TABLE yang menghapus tabel secara keseluruhan beserta struktur dan definisinya.
+        </li>
+    </ol>
+    <p>
+        Contoh tabel sebelum dilakukan truncate
+    </p>
+    <pre>
+        +----+----------+-----------------+
+        | id | username | email           |
+        +----+----------+-----------------+
+        | 1  | john     | john@email.com  |
+        | 2  | mary     | mary@email.com  |
+        | 3  | alice    | alice@email.com |
+        +----+----------+-----------------+
+    </pre>
+    <p>
+        Jika kita menjalankan perintah TRUNCATE TABLE users;, maka semua data dalam tabel akan dihapus, tetapi struktur tabel (termasuk definisi kolom) tetap ada. Setelah TRUNCATE TABLE, tabel users akan kosong seperti berikut:
+    </p>
+    <pre>
+        +----+----------+--------------+
+        | id | username | email        |
+        +----+----------+--------------+
+        |    |          |              |
+        +----+----------+--------------+
+    </pre>
+
+    <h1>Menghapus Tabel</h1>
+    <p>
+        Untuk menghapus sebuah tabel secara permanen dari basis data MySQL, Anda dapat menggunakan perintah DROP TABLE. Perintah ini menghapus seluruh struktur tabel beserta semua data yang ada di dalamnya. Berikut adalah cara penggunaan DROP TABLE:
+    </p>
+    <ol>
+        <li>Gunakan perintah DROP TABLE diikuti dengan nama tabel yang ingin Anda hapus.
+            <pre>
+                DROP TABLE nama_tabel;
+            </pre>
+            Misalnya, jika Anda ingin menghapus tabel users:
+            <pre>
+                DROP TABLE users;
+            </pre>
+        </li>
+        <li>
+            Perintah DROP TABLE akan menghapus seluruh struktur dan data yang ada di dalam tabel. Tabel yang telah dihapus tidak dapat dipulihkan kembali.
+        </li>
+    </ol>
+    <p>
+        Contoh sebelum menjalankan perintah DROP TABLE, misalkan kita memiliki tabel users dengan data sebagai berikut:
+    </p>
+    <pre>
+        +----+----------+-----------------+
+        | id | username | email           |
+        +----+----------+-----------------+
+        | 1  | john     | john@email.com  |
+        | 2  | mary     | mary@email.com  |
+        | 3  | alice    | alice@email.com |
+        +----+----------+-----------------+
+    </pre>
+    <p>
+        Setelah menjalankan DROP TABLE users;, tabel users dan seluruh isinya akan dihapus dari basis data MySQL.
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Order By</title>
+</head>
+<body>
+    <h1>Operator Order By</h1>
+    <p>
+        Di MySQL, klausa ORDER BY digunakan untuk mengurutkan hasil query berdasarkan satu atau lebih kolom dalam urutan tertentu, baik secara ascending (default) atau descending. Operator ORDER BY sangat penting karena memungkinkan Anda untuk mengontrol urutan hasil query yang dikembalikan. 
+    </p>
+
+    <h1>Penggunaan Dasar ORDER BY</h1>
+    <p>
+        Pada dasarnya, klausa ORDER BY digunakan dalam pernyataan SELECT untuk mengurutkan hasil query berdasarkan kolom tertentu. Berikut adalah contoh penggunaan dasar ORDER BY:
+    </p>
+    <pre>
+        SELECT * FROM users
+        ORDER BY username;
+    </pre>
+    <p>
+        Pernyataan di atas akan mengembalikan semua baris dari tabel users, diurutkan secara ascending (secara default) berdasarkan nilai kolom username.
+    </p>
+
+    <h1>Urutan Descending</h1>
+    <p>
+        Untuk mengurutkan data secara descending (dari besar ke kecil atau Z-A), Anda bisa menambahkan kata kunci DESC setelah nama kolom:
+    </p>
+    <pre>
+        SELECT * FROM users
+        ORDER BY username DESC;
+    </pre>
+    <p>
+        Perintah ini akan mengurutkan hasil query secara descending berdasarkan nilai kolom username.
+    </p>
+
+    <h1>Menggunakan Multiple Columns</h1>
+    <p>
+        Anda juga bisa menggunakan ORDER BY dengan multiple columns untuk mengurutkan data berdasarkan lebih dari satu kolom. Misalnya, untuk mengurutkan berdasarkan nama secara ascending dan umur secara descending:
+    </p>
+    <pre>
+        SELECT * FROM users
+        ORDER BY nama ASC, umur DESC;
+    </pre>
+
+    <h1>Penggunaan dalam Hasil Fungsi atau Ekspresi</h1>
+    <p>
+        Anda dapat menggunakan ORDER BY dalam hasil fungsi atau ekspresi yang dihitung dalam query:
+    </p>
+    <pre>
+        SELECT username, YEAR(registration_date) AS tahun_pendaftaran
+        FROM users
+        ORDER BY tahun_pendaftaran DESC;
+    </pre>
+    <p>
+        Dalam contoh di atas, ORDER BY tahun_pendaftaran DESC mengurutkan hasil query berdasarkan tahun pendaftaran secara descending.
+    </p>
+
+
+
+
+
+
+
+
+</body>
+</html>

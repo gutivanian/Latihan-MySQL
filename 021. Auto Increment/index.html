@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Increment</title>
+</head>
+<body>
+    <h1>Auto Increment</h1>
+    <p>
+        AUTO_INCREMENT adalah atribut yang digunakan dalam SQL untuk menghasilkan nilai unik otomatis pada kolom tertentu, biasanya digunakan pada kolom PRIMARY KEY atau UNIQUE. Setiap kali baris baru ditambahkan ke tabel, nilai kolom yang memiliki atribut AUTO_INCREMENT akan meningkat secara otomatis.
+    </p>
+    <p>
+        Setiap baris baru akan mendapatkan nilai yang unik. Nilai akan bertambah secara otomatis berdasarkan nilai maksimum yang ada di kolom tersebut. Sering digunakan bersama dengan PRIMARY KEY untuk memastikan bahwa setiap baris dalam tabel dapat diidentifikasi secara unik.
+    </p>
+    <p>
+        Misalkan kita memiliki tabel users dengan kolom id yang menggunakan AUTO_INCREMENT untuk primary key:
+    </p>
+    <ol>
+        <li>Membuat Tabel:
+            <pre>
+                CREATE TABLE users (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nama VARCHAR(50),
+                    umur INT
+                );
+            </pre>
+        </li>
+        <li>
+            Menambahkan Data tanpa id:
+            <pre>
+                INSERT INTO users (nama, umur) VALUES ('Alice', 25);
+                INSERT INTO users (nama, umur) VALUES ('Bob', 30);
+                INSERT INTO users (nama, umur) VALUES ('Charlie', 28);
+            </pre>
+        </li>
+        <li>
+            Hasil Tabel Setelah Penambahan Data:
+            +----+---------+------+
+            | ID | Nama    | Umur |
+            +----+---------+------+
+            | 1  | Alice   | 25   |
+            | 2  | Bob     | 30   |
+            | 3  | Charlie | 28   |
+            +----+---------+------+
+        </li>
+    </ol>
+    <p>
+        Tabel terbentuk dengan nilai id yang otomatis bertambah setiap kali data baru dimasukkan.
+    </p>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constraint</title>
+</head>
+<body>
+    <h1>Constraint</h1>
+    <p>
+        Constraints di MySQL digunakan untuk menentukan aturan pada data dalam tabel. Mereka membantu menjaga integritas dan konsistensi data dalam database.
+    </p>
+
+    <h1>NOT NULL</h1>
+    <p>
+        NOT NULL memastikan bahwa kolom tidak dapat memiliki nilai NULL.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT NOT NULL,
+            name VARCHAR(50) NOT NULL,
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        id INT NOT NULL: Kolom id tidak dapat berisi nilai NULL. name VARCHAR(50) NOT NULL: Kolom name tidak dapat berisi nilai NULL.
+    </p>
+
+    <h1>UNIQUE</h1>
+    <p>
+        UNIQUE memastikan bahwa semua nilai di kolom adalah unik.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT NOT NULL,
+            email VARCHAR(100) UNIQUE,
+            name VARCHAR(50),
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        email VARCHAR(100) UNIQUE: Kolom email harus berisi nilai yang unik.
+    </p>
+
+    <h1>PRIMARY KEY</h1>
+    <p>
+        PRIMARY KEY adalah kombinasi dari NOT NULL dan UNIQUE. Kolom atau kumpulan kolom yang ditetapkan sebagai primary key akan memiliki nilai unik dan tidak boleh NULL.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        id INT PRIMARY KEY: Kolom id ditetapkan sebagai primary key.
+    </p>
+
+    <h1>FOREIGN KEY</h1>
+    <p>
+        FOREIGN KEY digunakan untuk menghubungkan kolom dalam satu tabel dengan primary key di tabel lain.
+    </p>
+    <pre>
+        CREATE TABLE departments (
+            id INT PRIMARY KEY,
+            name VARCHAR(50) NOT NULL
+        );
+
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            department_id INT,
+            FOREIGN KEY (department_id) REFERENCES departments(id)
+        );
+    </pre>
+    <p>
+        FOREIGN KEY (department_id) REFERENCES departments(id): Kolom department_id di tabel employees adalah foreign key yang merujuk ke kolom id di tabel departments.
+    </p>
+
+    <h1>CHECK</h1>
+    <p>
+        CHECK memastikan bahwa nilai dalam kolom memenuhi kondisi tertentu.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            salary DECIMAL(10, 2),
+            CHECK (salary >= 0)
+        );
+    </pre>
+    <p>
+        CHECK (salary >= 0): Kolom salary harus memiliki nilai yang lebih besar atau sama dengan 0.
+    </p>
+
+    <h1>DEFAULT</h1>
+    <p>DEFAULT memberikan nilai default untuk kolom jika tidak ada nilai yang disediakan.</p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            department VARCHAR(50) DEFAULT 'General',
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        department VARCHAR(50) DEFAULT 'General': Kolom department akan memiliki nilai default 'General' jika tidak ada nilai yang disediakan.
+    </p>
+
+    <h1>Menambah atau Menghapus Constraint pada Tabel</h1>
+    <p>
+        Di MySQL, Anda dapat menambah atau menghapus constraints pada tabel menggunakan perintah ALTER TABLE. Berikut ini adalah cara untuk menambah dan menghapus berbagai jenis constraints pada tabel.
+    </p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

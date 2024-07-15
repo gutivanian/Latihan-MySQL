@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengupdate Data</title>
+</head>
+<body>
+    <h1>Mengupdate Data</h1>
+    <p>
+        Untuk mengupdate data dalam tabel MySQL, Anda menggunakan perintah UPDATE. Perintah ini memungkinkan Anda untuk mengubah nilai kolom-kolom tertentu dalam satu atau lebih baris yang sudah ada di dalam tabel. Berikut adalah cara penggunaan dasar perintah UPDATE:
+    </p>
+    <p>
+        Misalkan kita memiliki tabel users dengan struktur sebagai berikut:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            registration_date DATE
+        );
+    </pre>
+    <p>
+        Untuk mengupdate data, gunakan perintah UPDATE dengan menentukan tabel yang ingin diupdate, kolom-kolom yang ingin diubah, dan kondisi untuk mengidentifikasi baris yang akan diupdate.
+    </p>
+    
+    <h1>Mengupdate Satu Kolom</h1>
+    <pre>
+        UPDATE users
+        SET email = 'new_email@email.com'
+        WHERE id = 1;
+    </pre>
+    <p>
+        Perintah di atas akan mengubah nilai kolom email menjadi 'new_email@email.com' untuk baris yang memiliki id = 1.
+    </p>
+
+    <h1>Mengupdate Beberapa Kolom</h1>
+    <pre>
+        UPDATE users
+        SET username = 'new_username', email = 'new_email@email.com'
+        WHERE id = 2;
+    </pre>
+    <p>
+        Perintah di atas akan mengubah nilai kolom username menjadi 'new_username' dan email menjadi 'new_email@email.com' untuk baris yang memiliki id = 2.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Key</title>
+</head>
+<body>
+    <h1>Primary Key</h1>
+    <p>
+        Primary key (kunci utama) dalam MySQL adalah sebuah kolom atau sekelompok kolom yang unik mengidentifikasi setiap baris dalam sebuah tabel. 
+    </p>
+    <p>
+        Karakteristik Primary Key:
+    </p>
+    <ol>
+        <li>Setiap nilai primary key harus unik di dalam tabel. Tidak boleh ada dua baris dengan nilai primary key yang sama.</li>
+        <li>Nilai primary key tidak boleh bernilai NULL. Hal ini memastikan bahwa setiap baris dalam tabel memiliki identitas yang jelas.</li>
+        <li>Secara default, MySQL akan membuat indeks untuk kolom primary key. Hal ini meningkatkan kinerja pencarian dan pengurutan data.</li>
+    </ol>
+    <p>
+        Menetapkan Primary Key:
+    </p>
+    <p>
+        Primary key bisa ditetapkan saat membuat tabel dengan menambahkan klausa PRIMARY KEY di definisi kolom:
+    </p>
+    <pre>
+        CREATE TABLE nama_tabel (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nama_kolom VARCHAR(50),
+            ...
+        );
+    </pre>
+    <p>
+        Dalam contoh di atas, kolom id ditetapkan sebagai primary key dengan menggunakan PRIMARY KEY dan AUTO_INCREMENT untuk menghasilkan nilai yang unik secara otomatis.
+    </p>
+
+    <h1>Mengubah atau Menambahkan Primary Key</h1>
+    <p>
+        Anda bisa mengubah primary key sebuah tabel menggunakan perintah ALTER TABLE, atau menambahkannya jika belum ada primary key sebelumnya:
+    </p>
+    <pre>
+        ALTER TABLE nama_tabel
+        ADD PRIMARY KEY (nama_kolom);
+    </pre>
+    <p>
+        Di sini, nama_kolom adalah nama kolom yang ingin Anda tetapkan sebagai primary key. Dalam sebuah tabel users, primary key sering kali digunakan pada kolom id yang unik untuk setiap pengguna. Ini memastikan setiap pengguna memiliki identifikasi unik, memudahkan untuk mengelola dan mengakses data pengguna secara efisien.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

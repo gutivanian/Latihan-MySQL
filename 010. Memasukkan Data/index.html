@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memasukkan Data</title>
+</head>
+<body>
+    <h1>Memasukkan Data</h1>
+    <p>
+        Untuk memasukkan data baru ke dalam tabel di MySQL, Anda menggunakan perintah INSERT INTO. Perintah ini memungkinkan Anda untuk menambahkan satu baris data atau beberapa baris data sekaligus ke dalam tabel.
+    </p>
+
+    <h1>Memasukkan Satu Baris Data</h1>
+    <p>
+        Untuk memasukkan satu baris data ke dalam tabel kita bisa menggunakan perintah:
+    </p>
+    <pre>
+        INSERT INTO nama_tabel (kolom1, kolom2, kolom3, ...)
+        VALUES (nilai1, nilai2, nilai3, ...);
+    </pre>
+    <p>
+        Contoh:
+    </p>
+    <pre>
+        INSERT INTO users (username, email, registration_date)
+        VALUES ('john', 'john@email.com', '2023-01-01');
+    </pre>
+    <p>
+        Dalam contoh ini, data baru dengan username 'john', email 'john@email.com', dan registration_date '2023-01-01' akan dimasukkan ke dalam tabel users.
+    </p>
+
+    <h1>Memasukkan Beberapa Baris Data Sekaligus</h1>
+    <p>
+        Anda juga dapat memasukkan beberapa baris data sekaligus dengan satu perintah INSERT INTO. Contoh:
+    </p>
+    <pre>
+        INSERT INTO users (username, email, registration_date)
+        VALUES
+        ('mary', 'mary@email.com', '2023-02-01'),
+        ('alice', 'alice@email.com', '2023-03-01'),
+        ('bob', 'bob@email.com', '2023-04-01');
+    </pre>
+
+    <h1>Memasukkan Data Dengan Mengabaikan Nilai Default</h1>
+    <p>
+        Untuk memasukkan data ke dalam tabel MySQL dengan mengabaikan nilai default yang ditetapkan pada kolom-kolom tertentu, Anda perlu menentukan kolom-kolom mana yang ingin Anda isi dengan nilai spesifik dan mengabaikan nilai default yang mungkin ada. 
+    </p>
+    <p>
+        Misalkan Anda memiliki tabel users dengan struktur seperti ini:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            registration_date DATE DEFAULT CURRENT_DATE
+        );
+    </pre>
+    <p>
+        Di tabel ini, registration_date memiliki default value CURRENT_DATE, yang akan diisi secara otomatis saat data baru dimasukkan ke dalam tabel, kecuali Anda menyediakan nilai untuk kolom tersebut. Untuk memasukkan data dan mengabaikan nilai default registration_date, Anda perlu mencantumkan kolom-kolom mana yang akan Anda isi nilai secara eksplisit:
+    </p>
+    <pre>
+        INSERT INTO users (username, email)
+        VALUES ('john', 'john@email.com');
+    </pre>
+    <p>
+        Dalam contoh ini, kita tidak mencantumkan kolom registration_date dalam pernyataan INSERT INTO. Oleh karena itu, nilai default CURRENT_DATE tidak akan diisikan ke dalam tabel. 
+    </p>
+
+
+</body>
+</html>

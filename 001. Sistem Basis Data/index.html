@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Basis Data</title>
+</head>
+<body>
+    <h1>Sistem Basis Data</h1>
+    <p>
+        Sistem basis data adalah kumpulan data yang saling terkait dan sistem perangkat lunak yang mengelola dan menyediakan akses ke data tersebut. Sistem ini dirancang untuk memudahkan penyimpanan, pengambilan, dan pengelolaan data dengan cara yang terstruktur dan terorganisir.
+    </p>
+    <h2>Data</h2>
+    <p>
+        Data adalah informasi yang disimpan dalam basis data. Data ini bisa berupa teks, angka, gambar, atau jenis data lainnya yang relevan dengan aplikasi tertentu.
+    </p>
+
+    <h2>DBMS (Database Management System)</h2>
+    <p>
+        DBMS atau Database Management System adalah perangkat lunak yang digunakan untuk mengelola basis data. DBMS memungkinkan pengguna untuk membuat, mengakses, memperbarui, dan mengelola data dalam basis data dengan cara yang efisien dan terorganisir. Fungsi utama DBMS antara lain:
+    </p>
+    <ol>
+        <li>Menyediakan Antarmuka Pengguna: DBMS menyediakan antarmuka bagi pengguna untuk melakukan operasi seperti menambahkan, menghapus, dan memperbarui data.</li>
+        <li>Manajemen Data: Mengelola data sehingga bisa diakses dengan cepat dan efisien. Ini termasuk pengindeksan data, pengelompokan data, dan pengoptimalan kueri.</li>
+        <li>Keamanan Data: Memastikan bahwa data aman dari akses yang tidak sah dan menyediakan mekanisme untuk backup dan pemulihan data.</li>
+        <li>Konsistensi Data: Menjaga integritas dan konsistensi data meskipun ada kegagalan sistem atau kesalahan pengguna</li>
+        <li>
+            Manajemen Transaksi: Mengelola transaksi sehingga semua operasi database dilakukan secara atomik, konsisten, terisolasi, dan tahan lama (prinsip ACID).
+        </li>
+    </ol>
+    <p>
+        Contoh dari DBMS termasuk MySQL, PostgreSQL, Microsoft SQL Server, Oracle Database, dan SQLite.
+    </p>
+
+    <h2>Model Data</h2>
+    <p>
+        Model data adalah struktur yang menentukan bagaimana data diatur, disimpan, dan diakses dalam basis data. Model data yang umum digunakan antara lain:
+    </p>
+    <ul>
+        <li>Model Relasional: Data diorganisasi dalam tabel (relasi) yang terdiri dari baris dan kolom. Setiap tabel memiliki kunci utama yang mengidentifikasi setiap baris secara unik.</li>
+        <li>Model Hirarkis: Data diorganisasi dalam struktur pohon di mana setiap entitas memiliki hubungan satu-ke-banyak.</li>
+        <li>Model Jaringan: Mirip dengan model hirarkis, tetapi setiap entitas dapat memiliki hubungan banyak-ke-banyak.</li>
+        <li>Model Berorientasi Objek: Data diorganisasi sebagai objek yang mirip dengan pemrograman berorientasi objek.</li>
+    </ul>
+
+    <h2>Bahasa Kuero</h2>
+    <p>
+        Bahasa kueri adalah bahasa yang digunakan untuk mengakses dan mengelola data dalam basis data. Contoh paling umum adalah SQL (Structured Query Language), yang digunakan dalam model basis data relasional.
+    </p>
+
+    <h2>Keamanan dan Integritas Data</h2>
+    <p>
+        Sistem basis data harus menjamin bahwa data aman dari akses yang tidak sah dan bahwa data tetap konsisten meskipun terjadi kegagalan sistem atau kesalahan pengguna. Ini melibatkan mekanisme seperti kontrol akses, enkripsi, dan mekanisme backup dan pemulihan.
+    </p>
+
+    <h2>Manajemen Transaksi</h2>
+    <p>
+        Transaksi adalah kumpulan operasi yang dilakukan sebagai satu unit kerja. Sistem basis data harus memastikan bahwa transaksi memenuhi prinsip ACID (Atomicity, Consistency, Isolation, Durability) untuk menjaga integritas data.
+    </p>
+
+    <h2>Optimasi Kinerja</h2>
+    <p>
+        Sistem basis data harus dioptimalkan untuk memberikan kinerja yang cepat dan efisien. Ini termasuk pengindeksan, caching, dan pengoptimalan kueri.
+    </p>
+
+    <h2>Pemodelan dan Desain Data</h2>
+    <p>
+        Pemodelan data adalah proses merancang struktur basis data yang efisien dan sesuai dengan kebutuhan bisnis. Ini melibatkan pembuatan diagram ERD (Entity-Relationship Diagram) dan menentukan hubungan antar entitas.
+    </p>
+    <p>
+        Dengan menggunakan sistem basis data, organisasi dapat menyimpan, mengelola, dan menganalisis data dengan cara yang lebih efektif dan efisien, mendukung pengambilan keputusan yang lebih baik dan operasional yang lebih lancar.
+    </p>
+
+    <h1>Skema Kerja DBMS</h1>
+    <p>
+        Berikut adalah diagram sederhana yang menggambarkan skema DBMS dengan komponen utama:
+    </p>
+    <ol>
+        <li>
+            User/Applications: Pengguna atau aplikasi yang berinteraksi dengan basis data.
+        </li>
+        <li>
+            DBMS: Sistem manajemen basis data yang terdiri dari beberapa komponen utama.
+        </li>
+        <li>
+            Database: Tempat penyimpanan data.
+        </li>
+    </ol>
+    <pre>
+        +-------------------+
+        | User/Applications |
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |       DBMS        |
+        |  +-------------+  |
+        |  | Database    |  |
+        |  | Engine      |  |
+        |  +-------------+  |
+        |  | Query       |  |
+        |  | Processor   |  |
+        |  +-------------+  |
+        |  | Transaction |  |
+        |  | Management  |  |
+        |  +-------------+  |
+        |  | Access      |  |
+        |  | Control     |  |
+        |  +-------------+  |
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |     Database      |
+        +-------------------+       
+    </pre>
+
+    <p>
+        User/Applications: Berinteraksi dengan DBMS untuk melakukan operasi seperti menyimpan, mengambil, dan memperbarui data.
+    </p>
+    <p>
+        DBMS: Terdiri dari beberapa komponen:
+    </p>
+        <ul>
+            <li>Database Engine: Mengelola penyimpanan, pengambilan, dan pembaruan data.</li>
+            <li>Query Processor: Menafsirkan dan menjalankan perintah SQL.</li>
+            <li>Transaction Management: Memastikan transaksi dilakukan dengan benar dan data tetap konsisten.</li>
+            <li>Access Control: Mengelola hak akses pengguna.</li>
+        </ul>
+    <p>
+        Database: Tempat data disimpan dan dikelola oleh DBMS.
+    </p>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

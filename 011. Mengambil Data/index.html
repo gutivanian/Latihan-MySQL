@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengambil Data</title>
+</head>
+<body>
+    <h1>Mengambil Data</h1>
+    <p>
+        Untuk mengambil data dari sebuah tabel dalam MySQL, Anda menggunakan perintah SELECT. Perintah ini memungkinkan Anda untuk mengambil data dari satu atau lebih tabel, serta memfilter data, mengurutkannya, atau melakukan operasi lainnya. 
+    </p>
+
+    <h1>Mengambil Semua Data dari Tabel</h1>
+    <p>
+        Untuk mengambil semua data dari sebuah tabel, Anda dapat menggunakan perintah SELECT * FROM nama_tabel;. Tanda * digunakan untuk menunjukkan bahwa Anda ingin mengambil semua kolom yang ada dalam tabel. Contoh:
+    </p>
+    <pre>
+        SELECT * FROM users;
+    </pre>
+    <p>
+        Perintah di atas akan mengembalikan semua data yang ada di dalam tabel users, termasuk semua kolom yang ada dalam tabel.
+    </p>
+
+    <h1>Memilih Kolom Tertentu</h1>
+    <p>
+        Jika Anda hanya tertarik dengan beberapa kolom tertentu, Anda dapat menyebutkan nama kolom-kolom tersebut secara eksplisit dalam perintah SELECT. Contoh:
+    </p>
+    <pre>
+        SELECT username, email FROM users;
+    </pre>
+    <p>
+        Perintah di atas akan mengambil hanya kolom username dan email dari tabel users.
+    </p>
+
+    <h1>Menambahkan Kondisi dengan WHERE</h1>
+    <p>
+        Untuk memfilter hasil query berdasarkan kriteria tertentu, Anda dapat menggunakan klausa WHERE. Contoh:
+    </p>
+    <pre>
+        SELECT * FROM users
+        WHERE registration_date >= '2023-01-01';
+    </pre>
+    <p>
+        Perintah di atas akan mengambil semua data dari tabel users dimana registration_date lebih besar atau sama dengan tanggal '2023-01-01'.
+    </p>
+
+    <h1>Mengurutkan Hasil dengan ORDER BY</h1>
+    <p>Untuk mengurutkan hasil query berdasarkan satu atau lebih kolom, gunakan klausa ORDER BY. Contoh:</p>
+    <pre>
+        SELECT * FROM users
+        ORDER BY registration_date DESC;
+    </pre>
+    <p>
+        Perintah di atas akan mengambil semua data dari tabel users dan mengurutkannya berdasarkan kolom registration_date secara descending (terbesar ke terkecil).
+    </p>
+
+    <h1>Mengambil Jumlah Baris dengan LIMIT</h1>
+    <p>
+        Untuk membatasi jumlah baris yang dikembalikan oleh query, Anda dapat menggunakan klausa LIMIT. Contoh:
+    </p>
+    <pre>
+        SELECT * FROM users
+        LIMIT 10;
+    </pre>
+    <p>
+        Perintah di atas akan mengambil maksimal 10 baris pertama dari tabel users.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

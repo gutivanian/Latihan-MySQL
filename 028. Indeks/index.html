@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indeks</title>
+</head>
+<body>
+    <h1>Indeks</h1>
+    <p>
+        Indeks di MySQL digunakan untuk meningkatkan kecepatan pencarian dan pengambilan data dari tabel. Mereka berfungsi mirip seperti indeks di buku yang membantu menemukan informasi dengan cepat tanpa harus membaca setiap halaman. Indeks dapat dibuat di satu atau lebih kolom tabel.
+    </p>
+
+    <h1>Jenis-Jenis Indeks</h1>
+    <h2>PRIMARY KEY</h2>
+    <p>
+        PRIMARY KEY adalah kombinasi dari UNIQUE dan NOT NULL. Setiap tabel hanya bisa memiliki satu PRIMARY KEY, yang memastikan bahwa setiap baris memiliki nilai yang unik dan tidak boleh NULL.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            email VARCHAR(100) UNIQUE,
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        id INT PRIMARY KEY: Kolom id adalah PRIMARY KEY, yang berarti setiap nilai dalam kolom ini unik dan tidak boleh NULL.
+    </p>
+
+    <h2>UNIQUE INDEX</h2>
+    <p>
+        UNIQUE INDEX memastikan bahwa semua nilai dalam kolom atau kombinasi kolom adalah unik. Tidak seperti PRIMARY KEY, sebuah tabel dapat memiliki beberapa UNIQUE INDEX.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            email VARCHAR(100) UNIQUE,
+            name VARCHAR(50),
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+    </pre>
+    <p>
+        email VARCHAR(100) UNIQUE: Kolom email harus memiliki nilai unik, artinya tidak boleh ada dua baris dengan nilai email yang sama.
+    </p>
+
+    <h2>FULLTEXT INDEX</h2>
+    <p>
+        FULLTEXT INDEX digunakan untuk pencarian teks penuh pada kolom yang mengandung teks panjang, seperti artikel atau deskripsi. Ini memungkinkan pencarian teks yang lebih efisien dibandingkan dengan pencarian teks sederhana.
+    </p>
+    <pre>
+        CREATE TABLE articles (
+            id INT PRIMARY KEY,
+            title VARCHAR(200),
+            content TEXT,
+            FULLTEXT (title, content)
+        );
+    </pre>
+    <p>
+        FULLTEXT (title, content): Membuat indeks teks penuh pada kolom title dan content untuk mendukung pencarian teks penuh.
+    </p>
+
+    <h2>SPATIAL INDEX</h2>
+    <p>
+        SPATIAL INDEX digunakan untuk data geospasial, seperti titik, garis, dan poligon. Ini memungkinkan operasi spasial yang efisien.
+    </p>
+    <pre>
+        CREATE TABLE locations (
+            id INT PRIMARY KEY,
+            name VARCHAR(100),
+            coordinates POINT,
+            SPATIAL INDEX (coordinates)
+        );
+    </pre>
+    <p>
+        SPATIAL INDEX (coordinates): Membuat indeks spasial pada kolom coordinates yang berisi data tipe POINT.
+    </p>
+
+    <h2>INDEX (NORMAL INDEX)</h2>
+    <p>
+        INDEX atau indeks normal digunakan untuk mempercepat query yang sering dilakukan pada kolom atau kombinasi kolom tertentu. Ini tidak harus unik.
+    </p>
+    <pre>
+        CREATE TABLE employees (
+            id INT PRIMARY KEY,
+            name VARCHAR(50),
+            department VARCHAR(50),
+            salary DECIMAL(10, 2)
+        );
+
+        CREATE INDEX idx_department ON employees (department);
+    </pre>
+    <p>
+        CREATE INDEX idx_department ON employees (department): Membuat indeks pada kolom department untuk meningkatkan performa query yang melibatkan kolom tersebut.
+    </p>
+
+    <h1>Menambah dan Menghapus Index dengan ALTER TABLE</h1>
+    <p>
+        Anda dapat menambah dan menghapus indeks pada tabel menggunakan perintah ALTER TABLE. Berikut ini adalah cara untuk menambah dan menghapus berbagai jenis indeks pada tabel.
+    </p>
+    <h2>Menambah Indeks</h2>
+    <p>
+        Menambah Index Biasa (Normal Index)
+    </p>
+    <pre>
+        ALTER TABLE employees ADD INDEX idx_department (department);
+    </pre>
+    <p>
+        Menambah UNIQUE Index
+    </p>
+    <pre>
+        ALTER TABLE employees ADD UNIQUE INDEX idx_email (email);
+    </pre>
+    <p>
+        Menambah FULLTEXT Index
+    </p>
+    <pre>
+        ALTER TABLE articles ADD FULLTEXT INDEX idx_fulltext (title, content);
+    </pre>
+    <p>
+        Menambah SPATIAL Index
+    </p>
+    <pre>
+        ALTER TABLE locations ADD SPATIAL INDEX idx_coordinates (coordinates);
+    </pre>
+
+    <h2>Menghapus Indek</h2>
+    <p>
+        Menghapus Index Biasa (Normal Index)
+    </p>
+    <pre>
+        ALTER TABLE employees DROP INDEX idx_department;
+    </pre>
+    <p>
+        Menghapus UNIQUE Index
+    </p>
+    <pre>
+        ALTER TABLE employees DROP INDEX idx_email;
+    </pre>
+    <p>
+        Menghapus FULLTEXT Index
+    </p>
+    <pre>
+        ALTER TABLE articles DROP INDEX idx_fulltext;
+    </pre>
+    <p>
+        Menghapus SPATIAL Index
+    </p>
+    <pre>
+        ALTER TABLE locations DROP INDEX idx_coordinates;
+    </pre>
+
+
+
+</body>
+</html>

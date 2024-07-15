@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limit</title>
+</head>
+<body>
+    <h1>Limit</h1>
+    <p>
+        Di MySQL, operator LIMIT digunakan bersama dengan pernyataan SELECT untuk membatasi jumlah baris yang dikembalikan oleh query. Hal ini sangat berguna untuk mengambil sebagian data yang relevan dari hasil query, terutama saat bekerja dengan dataset yang besar atau saat Anda hanya membutuhkan sejumlah terbatas dari hasil query yang dihasilkan. 
+    </p>
+
+    <h1>Penggunaan Dasar LIMIT</h1>
+    <p>
+        Pada dasarnya, klausa LIMIT digunakan dalam pernyataan SELECT untuk membatasi jumlah baris yang dikembalikan oleh query. Contoh penggunaan dasar LIMIT:
+    </p>
+    <pre>
+        SELECT * FROM users
+        LIMIT 10;
+    </pre>
+    <p>
+        Pernyataan di atas akan mengembalikan 10 baris pertama dari tabel users, berdasarkan urutan default (biasanya berdasarkan urutan penyisipan, kecuali diurutkan menggunakan ORDER BY).
+    </p>
+
+    <h1>Kombinasi dengan ORDER BY</h1>
+    <p>
+        LIMIT sering digunakan bersama dengan ORDER BY untuk mengambil jumlah teratas atau terbawah dari hasil query yang sudah diurutkan. Misalnya, untuk mengambil 5 pengguna teratas berdasarkan jumlah post mereka:
+    </p>
+    <pre>
+        SELECT username, COUNT(*) AS jumlah_post
+        FROM users
+        JOIN posts ON users.id = posts.user_id
+        GROUP BY username
+        ORDER BY jumlah_post DESC
+        LIMIT 5;
+    </pre>
+    <p>
+        Dalam contoh di atas, LIMIT 5 membatasi hasil query untuk hanya mengembalikan 5 baris teratas yang diurutkan berdasarkan jumlah_post secara descending.
+    </p>
+
+    <h1>Menentukan Awal Baris (OFFSET)</h1>
+    <p>
+        LIMIT juga dapat digunakan bersama dengan OFFSET untuk memulai pengambilan baris dari posisi tertentu dalam hasil query. Contoh penggunaan LIMIT dengan OFFSET:
+    </p>
+    <pre>
+        SELECT * FROM users
+        LIMIT 5 OFFSET 10;
+    </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

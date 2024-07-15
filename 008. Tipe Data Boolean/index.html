@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data Boolean</title>
+</head>
+<body>
+    <h1>Tipe Data Boolean</h1>
+    <p>
+        Di MySQL, tipe data boolean tidak ada secara langsung seperti di beberapa basis data lainnya. Namun, MySQL memungkinkan penggunaan TINYINT(1) untuk merepresentasikan nilai boolean, dan juga mendukung penggunaan kata kunci TRUE dan FALSE yang sebenarnya merupakan alias untuk nilai 1 dan 0
+    </p>
+
+    <h1>TINYINT Sebagai Boolean</h1>
+    <ol>
+        <li>TINYINT adalah tipe data numerik yang menyimpan nilai integer kecil. MySQL merekomendasikan penggunaan TINYINT(1) untuk menyimpan nilai boolean.</li>
+        <li>Nilai 0 digunakan untuk merepresentasikan FALSE, dan nilai 1 digunakan untuk merepresentasikan TRUE.</li>
+    </ol>
+    <p>
+        Contoh penggunaan: TRUE: Disimpan sebagai 1. Contoh: Kolom "is_active" pada tabel pengguna, dengan nilai 1 menunjukkan bahwa pengguna tersebut aktif. FALSE: Disimpan sebagai 0. Contoh: Kolom "is_active" pada tabel pengguna, dengan nilai 0 menunjukkan bahwa pengguna tersebut tidak aktif.
+    </p>
+
+    <h1>TRUE dan FALSE</h1>
+    <ol>
+        <li>TRUE dan FALSE adalah alias untuk nilai 1 dan 0 dalam MySQL.</li>
+        <li>Ketika Anda menggunakan TRUE atau FALSE, MySQL secara otomatis mengonversinya menjadi 1 atau 0 dan menyimpannya sebagai TINYINT(1).</li>
+    </ol>
+    <p>
+        Contoh penggunaan: TRUE: TRUE disimpan sebagai 1. Contoh: Kolom "is_verified" pada tabel pengguna, dengan nilai TRUE menunjukkan bahwa pengguna tersebut terverifikasi. FALSE: FALSE disimpan sebagai 0. Contoh: Kolom "is_verified" pada tabel pengguna, dengan nilai FALSE menunjukkan bahwa pengguna tersebut tidak terverifikasi
+    </p>
+
+
+
+
+
+
+
+
+</body>
+</html>

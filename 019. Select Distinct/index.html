@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Distinct</title>
+</head>
+<body>
+    <h1>Select Distinct</h1>
+    <p>Klausa SELECT DISTINCT digunakan untuk menghapus duplikasi dari hasil query di MySQL. Ketika Anda menggunakan SELECT DISTINCT, hanya baris dengan nilai unik untuk kolom atau kombinasi kolom yang dipilih yang akan dikembalikan dalam hasil query.</p>
+    <p>
+        Misalkan kita memiliki tabel users dengan data berikut:
+    </p>
+    <pre>
+        +----+----------+-------------------+
+        | id | username | email             |
+        +----+----------+-------------------+
+        | 1  | alice    | alice@example.com |
+        | 2  | bob      | bob@example.com   |
+        | 3  | alice    | alice@another.com |
+        | 4  | dave     | dave@example.com  |
+        | 5  | eve      | eve@example.com   |
+        | 6  | bob      | bob@another.com   |
+        | 7  | alice    | alice@example.com |
+        +----+----------+-------------------+
+    </pre>
+    <p>
+        Jika kita ingin mendapatkan daftar username unik dari tabel users, kita bisa menggunakan query berikut:
+    </p>
+    <pre>
+        SELECT DISTINCT username
+        FROM users;
+    </pre>
+    <p>
+        SELECT DISTINCT username: Memilih hanya nilai unik dari kolom username. Query di atas akan menghasilkan daftar username unik:
+    </p>
+    <pre>
+        +----------+
+        | username |
+        +----------+
+        | alice    |
+        | bob      |
+        | dave     |
+        | eve      |
+        +----------+
+    </pre>
+
+    <h1>Contoh Lain dengan Multiple Columns</h1>
+    <p>
+        Jika kita ingin mendapatkan kombinasi unik dari beberapa kolom, misalnya username dan email, kita bisa menggunakan query berikut:
+    </p>
+    <pre>
+        SELECT DISTINCT username, email
+        FROM users;
+    </pre>
+    <p>
+        Hasil query ini akan mengembalikan kombinasi unik dari username dan email:
+    </p>
+    <pre>
+        +----------+-------------------+
+        | username | email             |
+        +----------+-------------------+
+        | alice    | alice@example.com |
+        | bob      | bob@example.com   |
+        | alice    | alice@another.com |
+        | dave     | dave@example.com  |
+        | eve      | eve@example.com   |
+        | bob      | bob@another.com   |
+        +----------+-------------------+
+    </pre>
+
+
+</body>
+</html>

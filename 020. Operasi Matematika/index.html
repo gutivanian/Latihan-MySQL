@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operasi Matematika</title>
+</head>
+<body>
+    <h1>Operasi Matematika</h1>
+    <p>
+        SQL menyediakan berbagai fungsi numerik untuk melakukan operasi aritmatika dan manipulasi angka. Berikut adalah beberapa fungsi numerik yang umum digunakan di SQL beserta penjelasan dan contohnya:
+    </p>
+    <h1>Penjumlahan (+)</h1>
+    <p>
+        Operator + digunakan untuk menambahkan dua angka.
+    </p>
+    <pre>
+        SELECT 5 + 3 AS result;
+    </pre>
+    <p>hasilnya adalah</p>
+    <pre>
+        result
+        ------
+        8
+    </pre>
+
+    <h1>Pengurangan (-)</h1>
+    <p>Operator - digunakan untuk mengurangi satu angka dari angka lainnya.</p>
+    <pre>
+        SELECT 10 - 4 AS result;
+    </pre>
+    <p>
+        dengan hasil
+    </p>
+    <pre>
+        result
+        ------
+        6
+    </pre>
+
+    <h1>Perkalian (*)</h1>
+    <p>
+        Operator * digunakan untuk mengalikan dua angka.
+    </p>
+    <pre>
+        SELECT 7 * 2 AS result;
+    </pre>
+    <p>
+        yang akan menghasilkan
+    </p>
+    <pre>
+        result
+        ------
+        14
+    </pre>
+
+    <h1>Pembagian (/)</h1>
+    <p>
+        Operator / digunakan untuk membagi satu angka dengan angka lainnya. Hasilnya adalah angka desimal.
+    </p>
+    <pre>
+        SELECT 15 / 2 AS result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        result
+        ------
+        7.5
+    </pre>
+
+    <h1>Pembagian Integer (DIV)</h1>
+    <p>
+        Operator DIV digunakan untuk membagi satu angka dengan angka lainnya dan mengembalikan bagian integer dari hasil pembagian.
+    </p>
+    <pre>
+        SELECT 15 DIV 2 AS result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        result
+        ------
+        7
+    </pre>
+    
+    <h1>Modulo (%)</h1>
+    <p>
+        Operator % atau MOD digunakan untuk mendapatkan sisa dari pembagian dua angka.
+    </p>
+    <pre>
+        SELECT 15 % 4 AS result;
+        -- Atau menggunakan fungsi MOD
+        SELECT MOD(15, 4) AS result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        result
+        ------
+        3
+    </pre>
+
+    <h1>Mengubah Tanda Angka (-)</h1>
+    <p>
+        Operator - dapat digunakan untuk mengubah tanda suatu angka dari positif ke negatif atau sebaliknya.
+    </p>
+    <pre>
+        SELECT -(-5) AS result;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        result
+        ------
+        5
+    </pre>
+
+    <h2>Contoh Penggunaan dalam Query</h2>
+    <p>
+        Misalkan kita memiliki tabel products dengan data berikut:
+    </p>
+    <pre>
+        +----+------------+-------+
+        | id | product    | price |
+        +----+------------+-------+
+        | 1  | Product A  | 100   |
+        | 2  | Product B  | 200   |
+        | 3  | Product C  | 300   |
+        +----+------------+-------+
+    </pre>
+    <p>
+        Menghitung Diskon 10% untuk Semua Produk
+    </p>
+    <pre>
+        SELECT product, price, price * 0.9 AS discounted_price
+        FROM products;
+    </pre>
+    <p>Hasilnya</p>
+    <pre>
+        +-----------+-------+-----------------+
+        | product   | price | discounted_price|
+        +-----------+-------+-----------------+
+        | Product A | 100   | 90.0            |
+        | Product B | 200   | 180.0           |
+        | Product C | 300   | 270.0           |
+        +-----------+-------+-----------------+
+    </pre>
+
+    <h1>Fungsi Lain</h1>
+    <table>
+        <tr>
+            <th>Fungsi</th>
+            <th>Deskripsi</th>
+            <th>Contoh Penggunaan</th>
+            <th>Hasil</th>
+        </tr>
+        <tr>
+            <td>ABS(x)</td>
+            <td>Mengembalikan nilai absolut dari x</td>
+            <td><code>SELECT ABS(-5) AS result;</code></td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>CEIL(x)</td>
+            <td>Mengembalikan nilai terkecil yang lebih besar atau sama dengan x (pembulatan ke atas)</td>
+            <td><code>SELECT CEIL(4.2) AS result;</code></td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>FLOOR(x)</td>
+            <td>Mengembalikan nilai terbesar yang kurang dari atau sama dengan x (pembulatan ke bawah)</td>
+            <td><code>SELECT FLOOR(4.8) AS result;</code></td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>ROUND(x)</td>
+            <td>Membulatkan x ke bilangan bulat terdekat</td>
+            <td><code>SELECT ROUND(4.6) AS result;</code></td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>ROUND(x, d)</td>
+            <td>Membulatkan x ke d tempat desimal</td>
+            <td><code>SELECT ROUND(4.678, 2) AS result;</code></td>
+            <td>4.68</td>
+        </tr>
+        <tr>
+            <td>POWER(x, y)</td>
+            <td>Mengembalikan x pangkat y</td>
+            <td><code>SELECT POWER(2, 3) AS result;</code></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>SQRT(x)</td>
+            <td>Mengembalikan akar kuadrat dari x</td>
+            <td><code>SELECT SQRT(16) AS result;</code></td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>EXP(x)</td>
+            <td>Mengembalikan e pangkat x</td>
+            <td><code>SELECT EXP(1) AS result;</code></td>
+            <td>2.7182818</td>
+        </tr>
+        <tr>
+            <td>LN(x)</td>
+            <td>Mengembalikan logaritma natural dari x</td>
+            <td><code>SELECT LN(2.7182818) AS result;</code></td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>LOG10(x)</td>
+            <td>Mengembalikan logaritma basis 10 dari x</td>
+            <td><code>SELECT LOG10(100) AS result;</code></td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>GREATEST(x1, x2, ...)</td>
+            <td>Mengembalikan nilai terbesar dari sekumpulan nilai</td>
+            <td><code>SELECT GREATEST(3, 7, 5) AS result;</code></td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>LEAST(x1, x2, ...)</td>
+            <td>Mengembalikan nilai terkecil dari sekumpulan nilai</td>
+            <td><code>SELECT LEAST(3, 7, 5) AS result;</code></td>
+            <td>3</td>
+        </tr>
+    </table>
+    <p>
+        dan yg lain dapat diakses di <a href="https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html ">sini</a>
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

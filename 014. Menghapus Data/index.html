@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghapus Data</title>
+</head>
+<body>
+    <h1>Menghapus Data</h1>
+    <p>
+        Untuk menghapus data dari tabel MySQL, Anda menggunakan perintah DELETE. Perintah ini memungkinkan Anda untuk menghapus satu atau lebih baris data yang ada dalam tabel berdasarkan kondisi yang Anda tentukan. Berikut adalah cara penggunaan dasar perintah DELETE:
+    </p>
+    <p>
+        Misalkan kita memiliki tabel users dengan struktur sebagai berikut:
+    </p>
+    <pre>
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            registration_date DATE
+        );
+    </pre>
+    <p>
+        Untuk menghapus data, gunakan perintah DELETE dengan menentukan tabel yang ingin dihapus dari, serta kondisi untuk mengidentifikasi baris yang akan dihapus.
+    </p>
+
+    <h1>Menghapus Baris dengan Kondisi Tertentu</h1>
+    <pre>
+        DELETE FROM users
+        WHERE id = 1;
+    </pre>
+    <p>Perintah di atas akan menghapus baris dari tabel users dimana nilai kolom id sama dengan 1.</p>
+
+    <h2>Menghapus Semua Data dalam Tabel</h2>
+    <pre>
+        DELETE FROM users;
+    </pre>
+    <p>
+        Perintah di atas akan menghapus semua baris data dari tabel users. Ini akan mengosongkan seluruh tabel, namun struktur tabelnya tetap ada.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

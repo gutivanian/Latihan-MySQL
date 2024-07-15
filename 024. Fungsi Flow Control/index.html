@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi Flow Control</title>
+</head>
+<body>
+    <h1>Fungsi Flow Control</h1>
+    <p>
+        Di MySQL, fungsi flow control seperti IF, CASE, LOOP, IFNULL, dan penggunaan nested queries dapat digunakan untuk mengatur alur eksekusi pernyataan SQL dan menangani data dengan lebih fleksibel. 
+    </p>
+
+    <h1>IF Statement</h1>
+    <p>
+        Pernyataan IF digunakan untuk mengevaluasi sebuah kondisi dan mengeksekusi blok pernyataan berdasarkan hasil evaluasi tersebut.
+    </p>
+    <p>
+        Misalkan kita memiliki tabel students:
+    </p>
+    <pre>
+        +----+----------+-------+
+        | id | name     | score |
+        +----+----------+-------+
+        | 1  | Alice    | 75    |
+        | 2  | Bob      | 50    |
+        | 3  | Charlie  | 85    |
+        +----+----------+-------+
+    </pre>
+    <p>
+        Kita dapat menggunakan pernyataan IF untuk menampilkan nama siswa dan kategori nilai mereka berdasarkan skor mereka:
+    </p>
+    <pre>
+        SELECT 
+            id, 
+            name, 
+            IF(score >= 60, 'Pass', 'Fail') AS result
+        FROM students;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----+----------+--------+
+        | id | name     | result |
+        +----+----------+--------+
+        | 1  | Alice    | Pass   |
+        | 2  | Bob      | Fail   |
+        | 3  | Charlie  | Pass   |
+        +----+----------+--------+
+    </pre>
+
+    <h1>CASE Statement</h1>
+    <p>
+        Pernyataan CASE digunakan untuk mengevaluasi beberapa kondisi dan mengeksekusi blok pernyataan berdasarkan kondisi yang cocok.
+    </p>
+    <pre>
+        SELECT 
+            id,
+            name,
+            CASE 
+                WHEN score >= 90 THEN 'A'
+                WHEN score >= 80 THEN 'B'
+                WHEN score >= 70 THEN 'C'
+                ELSE 'D'
+            END AS grade
+        FROM students;
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----+----------+-------+
+        | id | name     | grade |
+        +----+----------+-------+
+        | 1  | Alice    | B     |
+        | 2  | Bob      | D     |
+        | 3  | Charlie  | A     |
+        +----+----------+-------+
+    </pre>
+    
+    <h1>LOOP Statement</h1>
+    <pre>
+        Meskipun MySQL tidak memiliki struktur loop seperti bahasa pemrograman umumnya, Anda dapat mencapainya dengan menggunakan stored procedure dan cursor untuk melakukan iteras
+    </pre>
+
+    <h1>IFNULL Function</h1>
+    <p>
+        Fungsi IFNULL digunakan untuk mengembalikan nilai alternatif jika nilai yang diperiksa NULL.
+    </p>
+    <pre>
+        SELECT 
+            id,
+            name,
+            IFNULL(email, 'No email provided') AS email
+        FROM customers;
+    </pre>
+    <p>
+        Misalkan kita memiliki tabel customers:
+    </p>
+    <pre>
+        +----+----------+---------------------+
+        | id | name     | email               |
+        +----+----------+---------------------+
+        | 1  | Alice    | alice@example.com   |
+        | 2  | Bob      | NULL                |
+        | 3  | Charlie  | charlie@example.com |
+        +----+----------+---------------------+
+    </pre>
+    <p>
+        Hasilnya
+    </p>
+    <pre>
+        +----+----------+----------------------+
+        | id | name     | email                |
+        +----+----------+----------------------+
+        | 1  | Alice    | alice@example.com    |
+        | 2  | Bob      | No email provided    |
+        | 3  | Charlie  | charlie@example.com  |
+        +----+----------+----------------------+
+    </pre>
+
+    
+
+
+
+
+
+</body>
+</html>
